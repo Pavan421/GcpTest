@@ -17,8 +17,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.vinnotech.portal.model.Employee;
 import com.vinnotech.portal.service.EmployeeService;
 
+@CrossOrigin
 @RestController
-@CrossOrigin()
 @RequestMapping("/api/employees")
 public class EmployeeController {
 

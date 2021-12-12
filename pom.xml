@@ -12,7 +12,7 @@
 	<groupId>com.vinnotech</groupId>
 	<artifactId>portal</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>Vinnotech Project-1</name>
+	<name>Vinnotech  Project-1</name>
 	<description>Demo project for Spring Security with JWT and MYSQL JPA</description>
 
 	<properties>
