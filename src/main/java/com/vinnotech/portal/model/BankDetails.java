@@ -9,10 +9,6 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
-/**
- *
- * @author Suvarna Raju
- */
 @Setter
 @Getter
 @EqualsAndHashCode

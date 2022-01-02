@@ -8,8 +8,6 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
@@ -30,10 +28,6 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
-/**
- *
- * @author Suvarna Raju
- */
 @Data
 @Builder
 @NoArgsConstructor
@@ -44,16 +38,15 @@ import lombok.NoArgsConstructor;
 public class Course {
 	@Id
 	@Column(name = "course_id")
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long courseCode;
 	private String courseName;
 	@Lob
 	@Column(length = 1024)
 	private String courseContent;
-	// Normal/fasttract/Personal
-	private String type;
-	// online/offline
-	private String mode;
+	// Regular/fasttrack/Personal
+	private CourseTypeEnum type;
+	// online/offline/classroom
+	private CourseModeEnum mode;
 	@CreationTimestamp
 	@Temporal(TemporalType.DATE)
 	@JsonFormat(pattern = "yyyy-MM-dd")
@@ -75,18 +68,4 @@ public class Course {
 	@JsonIgnore
 	private List<StudentAck> studentAcks = new ArrayList<>();
 
-	// Generate course complete certificate
-//    @ManyToOne
-//    @JoinColumn(name = "student_id")
-//    private Student student;
-//    private String meetingId;
-//    private String meetingPassword;
-
-//
-//    @OneToMany(mappedBy = "course")
-//    private Set<CourseRating> ratings = new HashSet<>();
-//
-//    @OneToMany(mappedBy = "course")
-//    private Set<CourseRegistration> registrations = new HashSet<>();
-//
 }

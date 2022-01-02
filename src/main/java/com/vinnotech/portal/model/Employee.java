@@ -24,15 +24,15 @@ import org.hibernate.annotations.CreationTimestamp;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-/**
- *
- * @author Suvarna Raju
- */
-@Getter
-@Setter
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 public class Employee {
 	// General Information
@@ -41,40 +41,42 @@ public class Employee {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	@Column(nullable = false)
-	private String emailId;
 	private String firstName;
 	private String lastName;
 	private String shortName;
 	private String designation;
+	private String officialEmailId;
 	private String personalEmailId;
+	private int mobileNumber;
+	private String shortDesc;
 	// Area of Work//Technologies
+	private String accRole;
 	private String skills;
 	@CreationTimestamp
 	@Temporal(TemporalType.DATE)
 	@JsonFormat(pattern = "yyyy-MM-dd")
-	private Date startDate;
+	private Date joinDate;
 	@Temporal(TemporalType.DATE)
 	@JsonFormat(pattern = "yyyy-MM-dd")
 	private Date endDate;
 
 	// Governmant provided documents
 	private String panNumber;
-	private String aadharNumber;
+	private String personalNumber;
 	private String passportNumber;
 	private String pfAccountNumber;
 	private String UAN;
 
 	// Attachments
 	private String panCardPath;
-	private String aadharPath;
+	private String personalNumberPath;
 	private String passportPath;
-	private String photoPath;
 	private String hikeLetterPath;
 	private String promotionLatterPath;
 	private String resumePath;
-	// private String form16Path;
-	// private String form12aaPath;
-	// private String resignationLetterPath;
+	private String photoPath;
+	private boolean isEmployeeDeleted;
+	private String changedBy;
 
 	@OneToOne(fetch = FetchType.EAGER, optional = true, cascade = CascadeType.ALL)
 	private BankDetails bankDetails;
@@ -98,5 +100,4 @@ public class Employee {
 	@JsonIgnore
 	private List<Project> projects = new ArrayList<>();
 
-	private boolean isEmployeeDeleted;
 }

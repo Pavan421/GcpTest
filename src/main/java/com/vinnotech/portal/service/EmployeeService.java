@@ -4,16 +4,20 @@ import java.util.List;
 
 import org.springframework.data.domain.Page;
 
+import com.vinnotech.portal.model.Attachments;
 import com.vinnotech.portal.model.Employee;
 
 public interface EmployeeService {
+
 	public Employee getEmployee(Long id);
 
 	public List<Employee> getAllEmployees();
 
 	public Employee saveEmployee(Employee emp);
 
-	public void deleteEmployee(Employee emp);
+	public String deleteEmployee(Long id);
+
+	public Attachments getAttachments(Long empId);
 
 	/*
 	 * public List<Employee> getAllEmployeeswitSorting(String field); public
@@ -28,4 +32,6 @@ public interface EmployeeService {
 
 	public Page<Employee> getAllEmployeeswithSortAndPagiDelASC(boolean isEmpDeleted, int offset, int pageSize,
 			String field);
+
+	public Page<Employee> searchEmpsByParam(String searchParam, int offset, int pageSize);
 }

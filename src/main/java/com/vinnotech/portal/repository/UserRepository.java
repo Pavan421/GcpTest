@@ -1,6 +1,11 @@
 package com.vinnotech.portal.repository;
-import com.vinnotech.portal.model.User;
-import org.springframework.data.repository.CrudRepository;
-public interface UserRepository extends CrudRepository<User, Integer> {
-    User findByUsername(String username);
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import com.vinnotech.portal.model.UserReg;
+
+@Repository
+public interface UserRepository extends JpaRepository<UserReg, Long> {
+	UserReg findByUsername(String username);
 }

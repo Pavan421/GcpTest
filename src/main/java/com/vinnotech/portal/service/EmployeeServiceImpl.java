@@ -4,92 +4,291 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import javax.servlet.http.HttpServletRequest;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
+import org.springframework.http.HttpStatus;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
-import com.vinnotech.portal.exception.ValidateException;
+import com.vinnotech.portal.config.JwtUtil;
+import com.vinnotech.portal.exception.HRPortalException;
+import com.vinnotech.portal.model.Attachments;
 import com.vinnotech.portal.model.Employee;
+import com.vinnotech.portal.model.HRPortalConstants;
+import com.vinnotech.portal.model.UserReg;
 import com.vinnotech.portal.repository.EmployeeRepository;
+import com.vinnotech.portal.repository.UserRepository;
 
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
 
+	private static final String CLASSNAME = "EmployeeServiceImpl";
+	private static final Logger LOGGER = LoggerFactory.getLogger(EmployeeServiceImpl.class);
+
 	@Autowired
 	private EmployeeRepository empRepository;
 
-	@Override
-	public Employee getEmployee(Long empId) {
-		Optional<Employee> employee = empRepository.findById(empId);
-		if (employee.isPresent() && !employee.get().isEmployeeDeleted()) {
-			return employee.get();
-		}
-		throw new ValidateException("No records found");
-	}
+	@Autowired
+	private UserRepository userRepository;
 
-	@Override
-	public List<Employee> getAllEmployees() {
-		List<Employee> employees = empRepository.findAll();
-		return employees.stream().filter(e -> e.isEmployeeDeleted() != true).collect(Collectors.toList());
-	}
+	@Autowired
+	private EmailService emailService;
 
+	@Autowired
+	private JwtUtil jwtUtil;
+
+	@Autowired
+	private PasswordEncoder bcryptEncoder;
+
+	/**
+	 * Create new employee
+	 */
 	@Override
 	public Employee saveEmployee(Employee emp) {
+		String methodName = "saveEmployee";
+		LOGGER.info(CLASSNAME + ": Entering into the " + methodName);
+		UserReg userReg = new UserReg();
 		try {
-			return empRepository.save(emp);
-			// System.out.println("Employee has save successfully");
-		} catch (Exception ex) {
-			System.out.println("Failed to create employee.." + ex.getMessage());
-			ex.printStackTrace();
-			throw new ValidateException("Failed to create employee..");
+			if (HRPortalConstants.ROLE_ADMIN.equals(emp.getAccRole())) {
+				userReg.setPriority(4);
+			} else if (HRPortalConstants.ROLE_HR.equals(emp.getAccRole())) {
+				userReg.setPriority(3);
+			} else if (HRPortalConstants.ROLE_RECRUITER.equals(emp.getAccRole())) {
+				userReg.setPriority(2);
+			} else {
+				userReg.setPriority(1);
+			}
+			HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes())
+					.getRequest();
+			String uname = jwtUtil.getUserNameFromRequest(request);
+			UserReg user = userRepository.findByUsername(uname);
+			int uPriority = user.getPriority();
+			if ((uPriority > userReg.getPriority()) || (user.getRole().equals(HRPortalConstants.ROLE_ADMIN))) {
+				Employee remp = empRepository.save(emp);
+				long empId = remp.getId();
+				if (!StringUtils.isEmpty(empId)) {
+					userReg.setEmpId(empId);
+					userReg.setUsername(emp.getShortName());
+					userReg.setPassword(bcryptEncoder.encode(emp.getShortName() + "@1234"));
+					userReg.setRole(emp.getAccRole());
+					userReg.setStatus(true);
+					UserReg u1 = userRepository.save(userReg);
+					if (!StringUtils.isEmpty(u1.getUsername())) {
+						String html = "<!doctype html>\n" + "<html lang=\"en\" xmlns=\"http://www.w3.org/1999/xhtml\"\n"
+								+ "      xmlns:th=\"http://www.thymeleaf.org\">\n" + "<head>\n"
+								+ "    <meta charset=\"UTF-8\">\n" + "    <meta name=\"viewport\"\n"
+								+ "          content=\"width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0\">\n"
+								+ "    <meta http-equiv=\"X-UA-Compatible\" content=\"ie=edge\">\n"
+								+ "    <title>Email</title>\n" + "</head>\n" + "<body>\n" + "<div>Hi  <b>"
+								+ emp.getFirstName() + "</b></div>\n" + "<div><b><h4>Congratulation!!!</h4></b></div>\n"
+								+ "<div>username <b>" + u1.getUsername() + "</b></div>\n" + "\n"
+								+ "<div> Your password is <b>" + emp.getShortName() + "@1234" + "</b></div>\n"
+								+ "<div>  <b> regards</b></div>\n" + "<div> <b> admin</b></div>\n" + "</body>\n"
+								+ "</html>\n";
+						emailService.sendMail(emp.getOfficialEmailId(), "cloudcare", html);
+					}
+				}
+				LOGGER.info(CLASSNAME + ": Existing from  " + methodName + " method");
+				return remp;
+			} else {
+				throw new HRPortalException(HttpStatus.UNAUTHORIZED.value(),
+						"You don't have permission to create/update :", "");
+			}
+		} catch (Exception e) {
+			LOGGER.error(CLASSNAME + "got error while getting Employee " + methodName + e.getMessage());
+			throw new HRPortalException(HttpStatus.BAD_REQUEST.value(), e.getMessage(), e.getCause().getMessage());
 		}
 	}
 
+	/**
+	 * Get the Employee details based on employee Id
+	 */
 	@Override
-	public void deleteEmployee(Employee emp) {
-		emp.setEmployeeDeleted(Boolean.TRUE);
-		empRepository.save(emp);
+	public Employee getEmployee(Long empId) {
+		String methodName = "getEmployee";
+		LOGGER.info(CLASSNAME + ": Entering into the " + methodName);
+		try {
+			Optional<Employee> employee = empRepository.findById(empId);
+			Employee emp = employee.get();
+			LOGGER.info(CLASSNAME + ": Existing from  " + methodName + " method");
+			return emp;
+
+		} catch (Exception e) {
+			LOGGER.error(CLASSNAME + "got error while getting Employee " + methodName + e.getMessage());
+			throw new HRPortalException(HttpStatus.NOT_FOUND.value(), e.getMessage(), e.getCause().getMessage());
+			// throw new ValidateException("No records found");
+		}
+		/*
+		 * LOGGER.info(CLASSNAME + ": Existing from  " + methodName + " method"); throw
+		 * new ValidateException("Record not found with id : " + empId);
+		 */
 	}
 
-	/*
-	 * @Override public List<Employee> getAllEmployeeswitSorting(String field){
-	 * return empRepository.findAll(Sort.by(Sort.Direction.ASC,field));
-	 * 
-	 * }
-	 * 
-	 * @Override public List<Employee> getAllEmployeeswitSortingDesc(String field){
-	 * return empRepository.findAll(Sort.by(Sort.Direction.DESC,field));
-	 * 
-	 * }
+	/**
+	 * getting the All Employees with out sorting
+	 */
+	@Override
+	public List<Employee> getAllEmployees() {
+		String methodName = "getAllEmployees";
+		LOGGER.info(CLASSNAME + ": Entering into the " + methodName);
+		try {
+			List<Employee> employees = empRepository.findAll();
+			LOGGER.info(CLASSNAME + ": Existing from  " + methodName + " method");
+			return employees.stream().filter(e -> e.isEmployeeDeleted() != true).collect(Collectors.toList());
+		} catch (Exception e) {
+			LOGGER.error(CLASSNAME + "got error while getting Employee " + methodName + e.getMessage());
+			throw new HRPortalException(HttpStatus.NOT_FOUND.value(), e.getMessage(), e.getCause().getMessage());
+		}
+	}
+
+	/**
+	 * Getting all Attachments of employee based on id
+	 */
+	@Override
+	public Attachments getAttachments(Long empId) {
+		String methodName = "getAttachments";
+		LOGGER.info(CLASSNAME + ": Entering into the " + methodName);
+		try {
+			Employee emp = empRepository.getById(empId);
+			Attachments att = new Attachments();
+			att.setHikeLetterPath(emp.getHikeLetterPath());
+			att.setPanCardPath(emp.getPanCardPath());
+			att.setPassportPath(emp.getPassportPath());
+			att.setPersonalNumberPath(emp.getPersonalNumberPath());
+			att.setPhotoPath(emp.getPhotoPath());
+			att.setPromotionLatterPath(emp.getPromotionLatterPath());
+			att.setResumePath(emp.getResumePath());
+			LOGGER.info(CLASSNAME + ": Existing from  " + methodName + " method");
+			return att;
+		} catch (Exception e) {
+			LOGGER.error(CLASSNAME + "got error while getting Employee " + methodName + e.getMessage());
+			throw new HRPortalException(HttpStatus.NOT_FOUND.value(), e.getMessage(), e.getCause().getMessage());
+		}
+	}
+
+	/**
+	 * deleting Employee based On id
+	 */
+	@Override
+	public String deleteEmployee(Long empId) {
+		String methodName = "deleteEmployee";
+		LOGGER.info(CLASSNAME + ": Entering into the " + methodName);
+		try {
+			Optional<Employee> optEmployee = empRepository.findById(empId);
+			Employee emp = new Employee();
+			if (optEmployee.isPresent() && !optEmployee.get().isEmployeeDeleted()) {
+				emp = optEmployee.get();
+				emp.setEmployeeDeleted(Boolean.TRUE);
+				empRepository.save(emp);
+			}
+		} catch (Exception e) {
+			LOGGER.error(CLASSNAME + "got error while deleting  Employee " + methodName + e.getMessage());
+			throw new HRPortalException(HttpStatus.NOT_FOUND.value(), e.getMessage(), e.getCause().getMessage());
+		}
+		LOGGER.info(CLASSNAME + ": Existing from  " + methodName + " method");
+		return "Employee Deleted Successfully";
+	}
+
+	/**
+	 * getting All Employees without pagination and pagination with descending order
 	 */
 	@Override
 	public Page<Employee> getAllEmployeeswithSortAndPagiDesc(int offset, int pageSize, String field) {
-		Page<Employee> employees = empRepository
-				.findAll(PageRequest.of(offset, pageSize, Sort.by(Sort.Direction.DESC, field)));
-		return employees;
+		String methodName = "getAllEmployeeswithSortAndPagiDesc";
+		LOGGER.info(CLASSNAME + ": Entering into the " + methodName);
+		try {
+			Page<Employee> employees = empRepository
+					.findAll(PageRequest.of(offset, pageSize, Sort.by(Sort.Direction.DESC, field)));
+			LOGGER.info(CLASSNAME + ": Existing from  " + methodName + " method");
+			return employees;
+		} catch (Exception e) {
+			LOGGER.error(CLASSNAME + "got error while getting Employee without pagination and pagination desc "
+					+ methodName + e.getMessage());
+			throw new HRPortalException(HttpStatus.NOT_FOUND.value(), e.getMessage(), e.getCause().getMessage());
+		}
 	}
 
+	/**
+	 * getting all Employees ascending order with pagination and sorting
+	 */
 	@Override
 	public Page<Employee> getAllEmployeeswithSortAndPagiASC(int offset, int pageSize, String field) {
-		Page<Employee> employees = empRepository
-				.findAll(PageRequest.of(offset, pageSize, Sort.by(Sort.Direction.ASC, field)));
-		return employees;
+		String methodName = "getAllEmployeeswithSortAndPagiASC";
+		LOGGER.info(CLASSNAME + ": Entering into the " + methodName);
+		try {
+			Page<Employee> employees = empRepository
+					.findAll(PageRequest.of(offset, pageSize, Sort.by(Sort.Direction.ASC, field)));
+			LOGGER.info(CLASSNAME + ": Existing from  " + methodName + " method");
+			return employees;
+		} catch (Exception e) {
+			LOGGER.error(CLASSNAME + "got error while getting Employee without pagination and pagination ase"
+					+ methodName + e.getMessage());
+			throw new HRPortalException(HttpStatus.NOT_FOUND.value(), e.getMessage(), e.getCause().getMessage());
+		}
 	}
 
+	/**
+	 * getting the all Old Employees with pagination and descending order
+	 */
+	@Override
 	public Page<Employee> getAllEmployeeswithSortAndPagiDelDesc(boolean isEmpDeleted, int offset, int pageSize,
 			String field) {
-		Page<Employee> employees = empRepository.findByEmpWithDeletedStatus(isEmpDeleted,
-				PageRequest.of(offset, pageSize, Sort.by(Sort.Direction.DESC, field)));
-		return employees;
+		String methodName = "getAllEmployeeswithSortAndPagiDelDesc";
+		LOGGER.info(CLASSNAME + ": Entering into the " + methodName);
+		try {
+			Page<Employee> employees = empRepository.findByEmpWithDeletedStatus(isEmpDeleted,
+					PageRequest.of(offset, pageSize, Sort.by(Sort.Direction.DESC, field)));
+			return employees;
+		} catch (Exception e) {
+			LOGGER.error(CLASSNAME + "got error while getting old  Employees without pagination and pagination ase"
+					+ methodName + e.getMessage());
+			throw new HRPortalException(HttpStatus.NOT_FOUND.value(), e.getMessage(), e.getCause().getMessage());
+		}
 	}
 
+	/**
+	 * getting the all Old Employees with pagination and descending order
+	 */
+	@Override
 	public Page<Employee> getAllEmployeeswithSortAndPagiDelASC(boolean isEmpDeleted, int offset, int pageSize,
 			String field) {
-		Page<Employee> employees = empRepository.findByEmpWithDeletedStatus(isEmpDeleted,
-				PageRequest.of(offset, pageSize, Sort.by(Sort.Direction.ASC, field)));
-		return employees;
+		String methodName = "getAllEmployeeswithSortAndPagiDelDesc";
+		LOGGER.info(CLASSNAME + ": Entering into the " + methodName);
+		try {
+			Page<Employee> employees = empRepository.findByEmpWithDeletedStatus(isEmpDeleted,
+					PageRequest.of(offset, pageSize, Sort.by(Sort.Direction.ASC, field)));
+			return employees;
+		} catch (Exception e) {
+			LOGGER.error(CLASSNAME + "got error while getting old Employees without pagination and pagination ase"
+					+ methodName + e.getMessage());
+			throw new HRPortalException(HttpStatus.NOT_FOUND.value(), e.getMessage(), e.getCause().getMessage());
+		}
 	}
 
+	/**
+	 * getting all employee details by search term
+	 */
+	@Override
+	public Page<Employee> searchEmpsByParam(String searchParam, int offset, int pageSize) {
+		String methodName = "searchEmpsByParam";
+		LOGGER.info(CLASSNAME + ": Entering into the " + methodName);
+		try {
+			Page<Employee> searchEmps = empRepository.searchEmpsBySearchParam(searchParam,
+					PageRequest.of(offset, pageSize));
+			LOGGER.info(CLASSNAME + ": Existing into the " + methodName);
+			return searchEmps;
+		} catch (Exception e) {
+			LOGGER.error(CLASSNAME + "got error while searching the Employees" + methodName + e.getMessage());
+			throw new HRPortalException(HttpStatus.NOT_FOUND.value(), e.getMessage(), e.getCause().getMessage());
+		}
+	}
 }

@@ -1,6 +1,7 @@
 package com.vinnotech.portal.model;
 
 import java.util.Date;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -19,10 +20,6 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
-/**
- *
- * @author Suvarna Raju
- */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

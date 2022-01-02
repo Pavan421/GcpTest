@@ -10,10 +10,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-/**
- *
- * @author Suvarna Raju
- */
 @Data
 @Builder
 @NoArgsConstructor
@@ -27,6 +23,4 @@ public class EmergencyContact {
     private String relation;
     private String phoneNumber;
     
-
-
 }
