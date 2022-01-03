@@ -6098,3 +6098,240 @@ java.lang.NullPointerException: Cannot invoke "org.apache.catalina.Service.getCo
 2022-01-03 00:39:09,988 [http-nio-8080-exec-2] INFO  c.v.p.s.JobAckService                              - JobAckService: Entering into the createAck 
 2022-01-03 00:39:11,000 [http-nio-8080-exec-2] INFO  c.v.p.s.JobAckService                              - JobAckService: Existing from  createAck method 
 2022-01-03 00:39:11,005 [http-nio-8080-exec-2] INFO  c.v.p.c.JobAckController                           - JobAckController: Existing from  createJobAck method 
+2022-01-03 21:02:59,695 [restartedMain] INFO  c.v.p.SpringBootApplication                        - Starting SpringBootApplication using Java 15.0.2 on vinnu-PC with PID 3208 (D:\VinnuPortal\VinnuPortal\target\classes started by vinnu in D:\VinnuPortal\VinnuPortal) 
+2022-01-03 21:02:59,746 [restartedMain] INFO  c.v.p.SpringBootApplication                        - No active profile set, falling back to default profiles: default 
+2022-01-03 21:03:00,008 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor    - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable 
+2022-01-03 21:03:00,009 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor    - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG' 
+2022-01-03 21:03:05,422 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate          - Bootstrapping Spring Data JPA repositories in DEFAULT mode. 
+2022-01-03 21:03:05,907 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate          - Finished Spring Data repository scanning in 430 ms. Found 9 JPA repository interfaces. 
+2022-01-03 21:03:07,760 [restartedMain] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler@45e1523f' of type [org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying) 
+2022-01-03 21:03:07,795 [restartedMain] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'methodSecurityMetadataSource' of type [org.springframework.security.access.method.DelegatingMethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying) 
+2022-01-03 21:03:10,094 [restartedMain] INFO  o.s.b.w.e.t.TomcatWebServer                        - Tomcat initialized with port(s): 8080 (http) 
+2022-01-03 21:03:10,168 [restartedMain] INFO  o.a.c.h.Http11NioProtocol                          - Initializing ProtocolHandler ["http-nio-8080"] 
+2022-01-03 21:03:10,171 [restartedMain] INFO  o.a.c.c.StandardService                            - Starting service [Tomcat] 
+2022-01-03 21:03:10,172 [restartedMain] INFO  o.a.c.c.StandardEngine                             - Starting Servlet engine: [Apache Tomcat/9.0.54] 
+2022-01-03 21:03:10,658 [restartedMain] INFO  o.a.c.c.C.[.[.[/]                                  - Initializing Spring embedded WebApplicationContext 
+2022-01-03 21:03:10,660 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext     - Root WebApplicationContext: initialization completed in 10646 ms 
+2022-01-03 21:03:11,761 [restartedMain] INFO  o.h.j.i.u.LogHelper                                - HHH000204: Processing PersistenceUnitInfo [name: default] 
+2022-01-03 21:03:11,965 [restartedMain] INFO  o.h.Version                                        - HHH000412: Hibernate ORM core version 5.4.32.Final 
+2022-01-03 21:03:12,543 [restartedMain] INFO  o.h.a.c.Version                                    - HCANN000001: Hibernate Commons Annotations {5.1.2.Final} 
+2022-01-03 21:03:13,027 [restartedMain] INFO  c.z.h.HikariDataSource                             - HikariPool-1 - Starting... 
+2022-01-03 21:03:13,594 [restartedMain] INFO  c.z.h.HikariDataSource                             - HikariPool-1 - Start completed. 
+2022-01-03 21:03:13,688 [restartedMain] INFO  o.h.d.Dialect                                      - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect 
+2022-01-03 21:03:16,712 [restartedMain] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator                 - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform] 
+2022-01-03 21:03:17,092 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean     - Initialized JPA EntityManagerFactory for persistence unit 'default' 
+2022-01-03 21:03:19,331 [restartedMain] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning 
+2022-01-03 21:03:23,018 [restartedMain] INFO  o.s.s.w.DefaultSecurityFilterChain                 - Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@4765dd02, org.springframework.security.web.context.SecurityContextPersistenceFilter@50fb658e, org.springframework.security.web.header.HeaderWriterFilter@49ebf784, org.springframework.security.web.authentication.logout.LogoutFilter@79b8fe5, com.vinnotech.portal.config.CustomJwtAuthenticationFilter@59768094, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@6264d92f, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@35501115, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@4b6acbe6, org.springframework.security.web.session.SessionManagementFilter@194544aa, org.springframework.security.web.access.ExceptionTranslationFilter@28e5757c, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@66b5090f] 
+2022-01-03 21:03:23,734 [restartedMain] INFO  o.s.b.a.w.s.WelcomePageHandlerMapping              - Adding welcome page: class path resource [static/index.html] 
+2022-01-03 21:03:24,174 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer                 - LiveReload server is running on port 35729 
+2022-01-03 21:03:24,234 [restartedMain] INFO  o.a.c.h.Http11NioProtocol                          - Starting ProtocolHandler ["http-nio-8080"] 
+2022-01-03 21:03:24,263 [restartedMain] WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'; nested exception is org.springframework.boot.web.server.PortInUseException: Port 8080 is already in use 
+2022-01-03 21:03:24,283 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean     - Closing JPA EntityManagerFactory for persistence unit 'default' 
+2022-01-03 21:03:24,304 [restartedMain] INFO  c.z.h.HikariDataSource                             - HikariPool-1 - Shutdown initiated... 
+2022-01-03 21:03:24,321 [restartedMain] INFO  c.z.h.HikariDataSource                             - HikariPool-1 - Shutdown completed. 
+2022-01-03 21:03:24,326 [restartedMain] INFO  o.a.c.h.Http11NioProtocol                          - Pausing ProtocolHandler ["http-nio-8080"] 
+2022-01-03 21:03:24,327 [restartedMain] INFO  o.a.c.c.StandardService                            - Stopping service [Tomcat] 
+2022-01-03 21:03:24,369 [restartedMain] INFO  o.a.c.h.Http11NioProtocol                          - Stopping ProtocolHandler ["http-nio-8080"] 
+2022-01-03 21:03:24,370 [restartedMain] INFO  o.a.c.h.Http11NioProtocol                          - Destroying ProtocolHandler ["http-nio-8080"] 
+2022-01-03 21:03:24,389 [restartedMain] INFO  o.s.b.a.l.ConditionEvaluationReportLoggingListener - 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled. 
+2022-01-03 21:03:24,458 [restartedMain] ERROR o.s.b.d.LoggingFailureAnalysisReporter             - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Web server failed to start. Port 8080 was already in use.
+
+Action:
+
+Identify and stop the process that's listening on port 8080 or configure this application to listen on another port.
+ 
+2022-01-03 21:18:05,266 [restartedMain] INFO  c.v.p.SpringBootApplication                        - Starting SpringBootApplication using Java 15.0.2 on vinnu-PC with PID 2792 (D:\VinnuPortal\VinnuPortal\target\classes started by vinnu in D:\VinnuPortal\VinnuPortal) 
+2022-01-03 21:18:05,302 [restartedMain] INFO  c.v.p.SpringBootApplication                        - No active profile set, falling back to default profiles: default 
+2022-01-03 21:18:05,473 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor    - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable 
+2022-01-03 21:18:05,474 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor    - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG' 
+2022-01-03 21:18:08,003 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate          - Bootstrapping Spring Data JPA repositories in DEFAULT mode. 
+2022-01-03 21:18:08,727 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate          - Finished Spring Data repository scanning in 680 ms. Found 9 JPA repository interfaces. 
+2022-01-03 21:18:10,869 [restartedMain] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler@6d0d178c' of type [org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying) 
+2022-01-03 21:18:10,895 [restartedMain] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'methodSecurityMetadataSource' of type [org.springframework.security.access.method.DelegatingMethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying) 
+2022-01-03 21:18:12,253 [restartedMain] INFO  o.s.b.w.e.t.TomcatWebServer                        - Tomcat initialized with port(s): 8080 (http) 
+2022-01-03 21:18:12,286 [restartedMain] INFO  o.a.c.h.Http11NioProtocol                          - Initializing ProtocolHandler ["http-nio-8080"] 
+2022-01-03 21:18:12,287 [restartedMain] INFO  o.a.c.c.StandardService                            - Starting service [Tomcat] 
+2022-01-03 21:18:12,289 [restartedMain] INFO  o.a.c.c.StandardEngine                             - Starting Servlet engine: [Apache Tomcat/9.0.54] 
+2022-01-03 21:18:12,637 [restartedMain] INFO  o.a.c.c.C.[.[.[/]                                  - Initializing Spring embedded WebApplicationContext 
+2022-01-03 21:18:12,638 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext     - Root WebApplicationContext: initialization completed in 7162 ms 
+2022-01-03 21:18:13,463 [restartedMain] INFO  o.h.j.i.u.LogHelper                                - HHH000204: Processing PersistenceUnitInfo [name: default] 
+2022-01-03 21:18:13,591 [restartedMain] INFO  o.h.Version                                        - HHH000412: Hibernate ORM core version 5.4.32.Final 
+2022-01-03 21:18:14,835 [restartedMain] INFO  o.h.a.c.Version                                    - HCANN000001: Hibernate Commons Annotations {5.1.2.Final} 
+2022-01-03 21:18:16,101 [restartedMain] INFO  c.z.h.HikariDataSource                             - HikariPool-1 - Starting... 
+2022-01-03 21:18:16,550 [restartedMain] INFO  c.z.h.HikariDataSource                             - HikariPool-1 - Start completed. 
+2022-01-03 21:18:16,580 [restartedMain] INFO  o.h.d.Dialect                                      - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect 
+2022-01-03 21:18:19,357 [restartedMain] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator                 - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform] 
+2022-01-03 21:18:20,017 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean     - Initialized JPA EntityManagerFactory for persistence unit 'default' 
+2022-01-03 21:18:23,333 [restartedMain] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning 
+2022-01-03 21:18:27,599 [restartedMain] INFO  o.s.s.w.DefaultSecurityFilterChain                 - Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@22cdd779, org.springframework.security.web.context.SecurityContextPersistenceFilter@64adce63, org.springframework.security.web.header.HeaderWriterFilter@342c7780, org.springframework.security.web.authentication.logout.LogoutFilter@32502535, com.vinnotech.portal.config.CustomJwtAuthenticationFilter@4d5c7fdf, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@6d9b1bf, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@7517a04d, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@49406698, org.springframework.security.web.session.SessionManagementFilter@65570ae3, org.springframework.security.web.access.ExceptionTranslationFilter@2405325, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@53ecfbb1] 
+2022-01-03 21:18:29,515 [restartedMain] INFO  o.s.b.a.w.s.WelcomePageHandlerMapping              - Adding welcome page: class path resource [static/index.html] 
+2022-01-03 21:18:31,319 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer                 - LiveReload server is running on port 35729 
+2022-01-03 21:18:31,546 [restartedMain] INFO  o.a.c.h.Http11NioProtocol                          - Starting ProtocolHandler ["http-nio-8080"] 
+2022-01-03 21:18:31,625 [restartedMain] INFO  o.s.b.w.e.t.TomcatWebServer                        - Tomcat started on port(s): 8080 (http) with context path '' 
+2022-01-03 21:18:31,652 [restartedMain] INFO  c.v.p.SpringBootApplication                        - Started SpringBootApplication in 27.488 seconds (JVM running for 30.235) 
+2022-01-03 21:18:37,693 [http-nio-8080-exec-2] INFO  o.a.c.c.C.[.[.[/]                                  - Initializing Spring DispatcherServlet 'dispatcherServlet' 
+2022-01-03 21:18:37,694 [http-nio-8080-exec-2] INFO  o.s.w.s.DispatcherServlet                          - Initializing Servlet 'dispatcherServlet' 
+2022-01-03 21:18:37,697 [http-nio-8080-exec-2] INFO  o.s.w.s.DispatcherServlet                          - Completed initialization in 3 ms 
+2022-01-03 21:20:36,206 [http-nio-8080-exec-6] INFO  c.v.p.c.EmployeeController                         - EmployeeController: Entering into the saveEmployee method 
+2022-01-03 21:20:36,208 [http-nio-8080-exec-6] INFO  c.v.p.s.EmployeeServiceImpl                        - EmployeeServiceImpl: Entering into the saveEmployee 
+2022-01-03 21:20:43,371 [http-nio-8080-exec-6] INFO  c.v.p.s.EmployeeServiceImpl                        - EmployeeServiceImpl: Existing from  saveEmployee method 
+2022-01-03 21:20:43,373 [http-nio-8080-exec-6] INFO  c.v.p.c.EmployeeController                         - EmployeeController: Existing from  saveEmployee method 
+2022-01-03 21:21:17,252 [http-nio-8080-exec-7] INFO  c.v.p.c.EmployeeController                         - EmployeeController: Entering into the getEmployee method 
+2022-01-03 21:21:17,256 [http-nio-8080-exec-7] INFO  c.v.p.s.EmployeeServiceImpl                        - EmployeeServiceImpl: Entering into the getEmployee 
+2022-01-03 21:21:17,369 [http-nio-8080-exec-7] INFO  c.v.p.s.EmployeeServiceImpl                        - EmployeeServiceImpl: Existing from  getEmployee method 
+2022-01-03 21:21:17,371 [http-nio-8080-exec-7] INFO  c.v.p.c.EmployeeController                         - EmployeeController: Existing from  getEmployee method 
+2022-01-03 21:39:25,119 [Thread-5] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean     - Closing JPA EntityManagerFactory for persistence unit 'default' 
+2022-01-03 21:39:25,128 [Thread-5] INFO  c.z.h.HikariDataSource                             - HikariPool-1 - Shutdown initiated... 
+2022-01-03 21:39:25,153 [Thread-5] INFO  c.z.h.HikariDataSource                             - HikariPool-1 - Shutdown completed. 
+2022-01-03 21:39:25,788 [restartedMain] INFO  c.v.p.SpringBootApplication                        - Starting SpringBootApplication using Java 15.0.2 on vinnu-PC with PID 2792 (D:\VinnuPortal\VinnuPortal\target\classes started by vinnu in D:\VinnuPortal\VinnuPortal) 
+2022-01-03 21:39:25,790 [restartedMain] INFO  c.v.p.SpringBootApplication                        - No active profile set, falling back to default profiles: default 
+2022-01-03 21:39:27,086 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate          - Bootstrapping Spring Data JPA repositories in DEFAULT mode. 
+2022-01-03 21:39:27,176 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate          - Finished Spring Data repository scanning in 88 ms. Found 9 JPA repository interfaces. 
+2022-01-03 21:39:27,665 [restartedMain] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler@24f402cd' of type [org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying) 
+2022-01-03 21:39:27,672 [restartedMain] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'methodSecurityMetadataSource' of type [org.springframework.security.access.method.DelegatingMethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying) 
+2022-01-03 21:39:27,854 [restartedMain] INFO  o.s.b.w.e.t.TomcatWebServer                        - Tomcat initialized with port(s): 8080 (http) 
+2022-01-03 21:39:27,857 [restartedMain] INFO  o.a.c.h.Http11NioProtocol                          - Initializing ProtocolHandler ["http-nio-8080"] 
+2022-01-03 21:39:27,858 [restartedMain] INFO  o.a.c.c.StandardService                            - Starting service [Tomcat] 
+2022-01-03 21:39:27,859 [restartedMain] INFO  o.a.c.c.StandardEngine                             - Starting Servlet engine: [Apache Tomcat/9.0.54] 
+2022-01-03 21:39:27,952 [restartedMain] INFO  o.a.c.c.C.[.[.[/]                                  - Initializing Spring embedded WebApplicationContext 
+2022-01-03 21:39:27,952 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext     - Root WebApplicationContext: initialization completed in 2150 ms 
+2022-01-03 21:39:28,164 [restartedMain] INFO  o.h.j.i.u.LogHelper                                - HHH000204: Processing PersistenceUnitInfo [name: default] 
+2022-01-03 21:39:28,178 [restartedMain] INFO  c.z.h.HikariDataSource                             - HikariPool-2 - Starting... 
+2022-01-03 21:39:28,190 [restartedMain] INFO  c.z.h.HikariDataSource                             - HikariPool-2 - Start completed. 
+2022-01-03 21:39:28,191 [restartedMain] INFO  o.h.d.Dialect                                      - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect 
+2022-01-03 21:39:29,106 [restartedMain] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator                 - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform] 
+2022-01-03 21:39:29,110 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean     - Initialized JPA EntityManagerFactory for persistence unit 'default' 
+2022-01-03 21:39:29,600 [restartedMain] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning 
+2022-01-03 21:39:30,815 [restartedMain] INFO  o.s.s.w.DefaultSecurityFilterChain                 - Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@3feadfef, org.springframework.security.web.context.SecurityContextPersistenceFilter@48960a38, org.springframework.security.web.header.HeaderWriterFilter@a797e5f, org.springframework.security.web.authentication.logout.LogoutFilter@353c392e, com.vinnotech.portal.config.CustomJwtAuthenticationFilter@22ed8d5f, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@19454c6f, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@580f529e, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@6d7cc0a4, org.springframework.security.web.session.SessionManagementFilter@19f18d0e, org.springframework.security.web.access.ExceptionTranslationFilter@216e1d98, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@7f6a3478] 
+2022-01-03 21:39:31,039 [restartedMain] INFO  o.s.b.a.w.s.WelcomePageHandlerMapping              - Adding welcome page: class path resource [static/index.html] 
+2022-01-03 21:39:31,170 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer                 - LiveReload server is running on port 35729 
+2022-01-03 21:39:31,191 [restartedMain] INFO  o.a.c.h.Http11NioProtocol                          - Starting ProtocolHandler ["http-nio-8080"] 
+2022-01-03 21:39:31,194 [restartedMain] INFO  o.s.b.w.e.t.TomcatWebServer                        - Tomcat started on port(s): 8080 (http) with context path '' 
+2022-01-03 21:39:31,210 [restartedMain] INFO  c.v.p.SpringBootApplication                        - Started SpringBootApplication in 5.737 seconds (JVM running for 1289.772) 
+2022-01-03 21:39:31,214 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener  - Condition evaluation unchanged 
+2022-01-03 21:39:38,643 [Thread-7] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean     - Closing JPA EntityManagerFactory for persistence unit 'default' 
+2022-01-03 21:39:38,670 [Thread-7] INFO  c.z.h.HikariDataSource                             - HikariPool-2 - Shutdown initiated... 
+2022-01-03 21:39:38,690 [Thread-7] INFO  c.z.h.HikariDataSource                             - HikariPool-2 - Shutdown completed. 
+2022-01-03 21:39:39,011 [restartedMain] INFO  c.v.p.SpringBootApplication                        - Starting SpringBootApplication using Java 15.0.2 on vinnu-PC with PID 2792 (D:\VinnuPortal\VinnuPortal\target\classes started by vinnu in D:\VinnuPortal\VinnuPortal) 
+2022-01-03 21:39:39,018 [restartedMain] INFO  c.v.p.SpringBootApplication                        - No active profile set, falling back to default profiles: default 
+2022-01-03 21:39:39,947 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate          - Bootstrapping Spring Data JPA repositories in DEFAULT mode. 
+2022-01-03 21:39:40,080 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate          - Finished Spring Data repository scanning in 131 ms. Found 9 JPA repository interfaces. 
+2022-01-03 21:39:40,276 [restartedMain] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler@1cc008a7' of type [org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying) 
+2022-01-03 21:39:40,283 [restartedMain] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'methodSecurityMetadataSource' of type [org.springframework.security.access.method.DelegatingMethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying) 
+2022-01-03 21:39:40,447 [restartedMain] INFO  o.s.b.w.e.t.TomcatWebServer                        - Tomcat initialized with port(s): 8080 (http) 
+2022-01-03 21:39:40,449 [restartedMain] INFO  o.a.c.h.Http11NioProtocol                          - Initializing ProtocolHandler ["http-nio-8080"] 
+2022-01-03 21:39:40,451 [restartedMain] INFO  o.a.c.c.StandardService                            - Starting service [Tomcat] 
+2022-01-03 21:39:40,453 [restartedMain] INFO  o.a.c.c.StandardEngine                             - Starting Servlet engine: [Apache Tomcat/9.0.54] 
+2022-01-03 21:39:40,535 [restartedMain] INFO  o.a.c.c.C.[.[.[/]                                  - Initializing Spring embedded WebApplicationContext 
+2022-01-03 21:39:40,535 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext     - Root WebApplicationContext: initialization completed in 1502 ms 
+2022-01-03 21:39:40,663 [restartedMain] INFO  o.h.j.i.u.LogHelper                                - HHH000204: Processing PersistenceUnitInfo [name: default] 
+2022-01-03 21:39:40,678 [restartedMain] INFO  c.z.h.HikariDataSource                             - HikariPool-3 - Starting... 
+2022-01-03 21:39:40,719 [restartedMain] INFO  c.z.h.HikariDataSource                             - HikariPool-3 - Start completed. 
+2022-01-03 21:39:40,719 [restartedMain] INFO  o.h.d.Dialect                                      - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect 
+2022-01-03 21:39:41,684 [restartedMain] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator                 - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform] 
+2022-01-03 21:39:41,691 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean     - Initialized JPA EntityManagerFactory for persistence unit 'default' 
+2022-01-03 21:39:41,880 [restartedMain] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning 
+2022-01-03 21:39:42,628 [restartedMain] INFO  o.s.s.w.DefaultSecurityFilterChain                 - Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@7d360faf, org.springframework.security.web.context.SecurityContextPersistenceFilter@6bc3cefc, org.springframework.security.web.header.HeaderWriterFilter@369c9984, org.springframework.security.web.authentication.logout.LogoutFilter@77c7cfd6, com.vinnotech.portal.config.CustomJwtAuthenticationFilter@2bd9754a, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@4731fdeb, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@32f07fdf, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@66618fe3, org.springframework.security.web.session.SessionManagementFilter@29a0ac82, org.springframework.security.web.access.ExceptionTranslationFilter@51f06743, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@577bae8e] 
+2022-01-03 21:39:42,777 [restartedMain] INFO  o.s.b.a.w.s.WelcomePageHandlerMapping              - Adding welcome page: class path resource [static/index.html] 
+2022-01-03 21:39:42,884 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer                 - LiveReload server is running on port 35729 
+2022-01-03 21:39:42,905 [restartedMain] INFO  o.a.c.h.Http11NioProtocol                          - Starting ProtocolHandler ["http-nio-8080"] 
+2022-01-03 21:39:42,908 [restartedMain] INFO  o.s.b.w.e.t.TomcatWebServer                        - Tomcat started on port(s): 8080 (http) with context path '' 
+2022-01-03 21:39:42,917 [restartedMain] INFO  c.v.p.SpringBootApplication                        - Started SpringBootApplication in 4.039 seconds (JVM running for 1301.478) 
+2022-01-03 21:39:42,919 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener  - Condition evaluation unchanged 
+2022-01-03 21:39:44,451 [Thread-11] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean     - Closing JPA EntityManagerFactory for persistence unit 'default' 
+2022-01-03 21:39:44,456 [Thread-11] INFO  c.z.h.HikariDataSource                             - HikariPool-3 - Shutdown initiated... 
+2022-01-03 21:39:44,469 [Thread-11] INFO  c.z.h.HikariDataSource                             - HikariPool-3 - Shutdown completed. 
+2022-01-03 21:39:45,145 [restartedMain] INFO  c.v.p.SpringBootApplication                        - Starting SpringBootApplication using Java 15.0.2 on vinnu-PC with PID 2792 (D:\VinnuPortal\VinnuPortal\target\classes started by vinnu in D:\VinnuPortal\VinnuPortal) 
+2022-01-03 21:39:45,148 [restartedMain] INFO  c.v.p.SpringBootApplication                        - No active profile set, falling back to default profiles: default 
+2022-01-03 21:39:46,319 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate          - Bootstrapping Spring Data JPA repositories in DEFAULT mode. 
+2022-01-03 21:39:46,444 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate          - Finished Spring Data repository scanning in 123 ms. Found 9 JPA repository interfaces. 
+2022-01-03 21:39:46,655 [restartedMain] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler@75a0316a' of type [org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying) 
+2022-01-03 21:39:46,664 [restartedMain] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'methodSecurityMetadataSource' of type [org.springframework.security.access.method.DelegatingMethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying) 
+2022-01-03 21:39:46,867 [restartedMain] INFO  o.s.b.w.e.t.TomcatWebServer                        - Tomcat initialized with port(s): 8080 (http) 
+2022-01-03 21:39:46,869 [restartedMain] INFO  o.a.c.h.Http11NioProtocol                          - Initializing ProtocolHandler ["http-nio-8080"] 
+2022-01-03 21:39:46,871 [restartedMain] INFO  o.a.c.c.StandardService                            - Starting service [Tomcat] 
+2022-01-03 21:39:46,872 [restartedMain] INFO  o.a.c.c.StandardEngine                             - Starting Servlet engine: [Apache Tomcat/9.0.54] 
+2022-01-03 21:39:47,001 [restartedMain] INFO  o.a.c.c.C.[.[.[/]                                  - Initializing Spring embedded WebApplicationContext 
+2022-01-03 21:39:47,002 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext     - Root WebApplicationContext: initialization completed in 1843 ms 
+2022-01-03 21:39:47,123 [restartedMain] INFO  o.h.j.i.u.LogHelper                                - HHH000204: Processing PersistenceUnitInfo [name: default] 
+2022-01-03 21:39:47,145 [restartedMain] INFO  c.z.h.HikariDataSource                             - HikariPool-4 - Starting... 
+2022-01-03 21:39:47,159 [restartedMain] INFO  c.z.h.HikariDataSource                             - HikariPool-4 - Start completed. 
+2022-01-03 21:39:47,160 [restartedMain] INFO  o.h.d.Dialect                                      - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect 
+2022-01-03 21:39:48,282 [restartedMain] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator                 - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform] 
+2022-01-03 21:39:48,286 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean     - Initialized JPA EntityManagerFactory for persistence unit 'default' 
+2022-01-03 21:39:48,425 [restartedMain] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning 
+2022-01-03 21:39:49,192 [restartedMain] INFO  o.s.s.w.DefaultSecurityFilterChain                 - Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@1c15d391, org.springframework.security.web.context.SecurityContextPersistenceFilter@4269292d, org.springframework.security.web.header.HeaderWriterFilter@63161bd6, org.springframework.security.web.authentication.logout.LogoutFilter@a8f9757, com.vinnotech.portal.config.CustomJwtAuthenticationFilter@527afe8, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@1aeff472, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@49f49452, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@439d5889, org.springframework.security.web.session.SessionManagementFilter@2f2a8413, org.springframework.security.web.access.ExceptionTranslationFilter@4ec2d389, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@4eec75b2] 
+2022-01-03 21:39:49,365 [restartedMain] INFO  o.s.b.a.w.s.WelcomePageHandlerMapping              - Adding welcome page: class path resource [static/index.html] 
+2022-01-03 21:39:49,476 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer                 - LiveReload server is running on port 35729 
+2022-01-03 21:39:49,490 [restartedMain] INFO  o.a.c.h.Http11NioProtocol                          - Starting ProtocolHandler ["http-nio-8080"] 
+2022-01-03 21:39:49,493 [restartedMain] INFO  o.s.b.w.e.t.TomcatWebServer                        - Tomcat started on port(s): 8080 (http) with context path '' 
+2022-01-03 21:39:49,500 [restartedMain] INFO  c.v.p.SpringBootApplication                        - Started SpringBootApplication in 4.686 seconds (JVM running for 1308.062) 
+2022-01-03 21:39:49,504 [restartedMain] INFO  o.s.b.d.a.ConditionEvaluationDeltaLoggingListener  - Condition evaluation unchanged 
+2022-01-03 21:40:08,192 [http-nio-8080-exec-2] INFO  o.a.c.c.C.[.[.[/]                                  - Initializing Spring DispatcherServlet 'dispatcherServlet' 
+2022-01-03 21:40:08,193 [http-nio-8080-exec-2] INFO  o.s.w.s.DispatcherServlet                          - Initializing Servlet 'dispatcherServlet' 
+2022-01-03 21:40:08,197 [http-nio-8080-exec-2] INFO  o.s.w.s.DispatcherServlet                          - Completed initialization in 2 ms 
+2022-01-03 21:40:08,241 [http-nio-8080-exec-2] INFO  c.v.p.c.CourseController                           - CourseController: Entering into the getAllJobswithSortAndPagiDesc method 
+2022-01-03 21:40:08,242 [http-nio-8080-exec-2] INFO  c.v.p.s.ContactusService                           - ContactusService: Entering into the getAllCourseswithSortAndPagiDesc 
+2022-01-03 21:40:08,492 [http-nio-8080-exec-2] WARN  o.h.e.j.s.SqlExceptionHelper                       - SQL Error: 1054, SQLState: 42S22 
+2022-01-03 21:40:08,494 [http-nio-8080-exec-2] ERROR o.h.e.j.s.SqlExceptionHelper                       - Unknown column 'postedOn' in 'order clause' 
+2022-01-03 21:40:08,505 [http-nio-8080-exec-2] ERROR c.v.p.s.ContactusService                           - ContactusServicegot error while getting All course desending order with PulishgetAllCourseswithSortAndPagiDesccould not extract ResultSet; SQL [n/a]; nested exception is org.hibernate.exception.SQLGrammarException: could not extract ResultSet 
+2022-01-03 21:40:08,533 [http-nio-8080-exec-2] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver    - Resolved [HRPortalException(statusCode=404, message=could not extract ResultSet; SQL [n/a]; nested exception is org.hibernate.exception.SQLGrammarException: could not extract ResultSet, errorCause=could not extract ResultSet)] 
+2022-01-03 21:40:40,620 [http-nio-8080-exec-3] INFO  c.v.p.c.CourseController                           - CourseController: Entering into the getAllJobswithSortAndPagiDesc method 
+2022-01-03 21:40:40,621 [http-nio-8080-exec-3] INFO  c.v.p.s.ContactusService                           - ContactusService: Entering into the getAllCourseswithSortAndPagiDesc 
+2022-01-03 21:40:40,626 [http-nio-8080-exec-3] WARN  o.h.e.j.s.SqlExceptionHelper                       - SQL Error: 1054, SQLState: 42S22 
+2022-01-03 21:40:40,628 [http-nio-8080-exec-3] ERROR o.h.e.j.s.SqlExceptionHelper                       - Unknown column 'startDate' in 'order clause' 
+2022-01-03 21:40:40,629 [http-nio-8080-exec-3] ERROR c.v.p.s.ContactusService                           - ContactusServicegot error while getting All course desending order with PulishgetAllCourseswithSortAndPagiDesccould not extract ResultSet; SQL [n/a]; nested exception is org.hibernate.exception.SQLGrammarException: could not extract ResultSet 
+2022-01-03 21:40:40,637 [http-nio-8080-exec-3] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver    - Resolved [HRPortalException(statusCode=404, message=could not extract ResultSet; SQL [n/a]; nested exception is org.hibernate.exception.SQLGrammarException: could not extract ResultSet, errorCause=could not extract ResultSet)] 
+2022-01-03 21:40:55,813 [http-nio-8080-exec-4] INFO  c.v.p.c.CourseController                           - CourseController: Entering into the getAllJobswithSortAndPagiDesc method 
+2022-01-03 21:40:55,814 [http-nio-8080-exec-4] INFO  c.v.p.s.ContactusService                           - ContactusService: Entering into the getAllCourseswithSortAndPagiDesc 
+2022-01-03 21:40:55,820 [http-nio-8080-exec-4] WARN  o.h.e.j.s.SqlExceptionHelper                       - SQL Error: 1054, SQLState: 42S22 
+2022-01-03 21:40:55,821 [http-nio-8080-exec-4] ERROR o.h.e.j.s.SqlExceptionHelper                       - Unknown column 'courseId' in 'order clause' 
+2022-01-03 21:40:55,821 [http-nio-8080-exec-4] ERROR c.v.p.s.ContactusService                           - ContactusServicegot error while getting All course desending order with PulishgetAllCourseswithSortAndPagiDesccould not extract ResultSet; SQL [n/a]; nested exception is org.hibernate.exception.SQLGrammarException: could not extract ResultSet 
+2022-01-03 21:40:55,827 [http-nio-8080-exec-4] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver    - Resolved [HRPortalException(statusCode=404, message=could not extract ResultSet; SQL [n/a]; nested exception is org.hibernate.exception.SQLGrammarException: could not extract ResultSet, errorCause=could not extract ResultSet)] 
+2022-01-03 21:41:05,435 [http-nio-8080-exec-5] INFO  c.v.p.c.CourseController                           - CourseController: Entering into the getAllJobswithSortAndPagiDesc method 
+2022-01-03 21:41:05,436 [http-nio-8080-exec-5] INFO  c.v.p.s.ContactusService                           - ContactusService: Entering into the getAllCourseswithSortAndPagiDesc 
+2022-01-03 21:41:05,443 [http-nio-8080-exec-5] WARN  o.h.e.j.s.SqlExceptionHelper                       - SQL Error: 1054, SQLState: 42S22 
+2022-01-03 21:41:05,445 [http-nio-8080-exec-5] ERROR o.h.e.j.s.SqlExceptionHelper                       - Unknown column 'courseName' in 'order clause' 
+2022-01-03 21:41:05,446 [http-nio-8080-exec-5] ERROR c.v.p.s.ContactusService                           - ContactusServicegot error while getting All course desending order with PulishgetAllCourseswithSortAndPagiDesccould not extract ResultSet; SQL [n/a]; nested exception is org.hibernate.exception.SQLGrammarException: could not extract ResultSet 
+2022-01-03 21:41:05,471 [http-nio-8080-exec-5] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver    - Resolved [HRPortalException(statusCode=404, message=could not extract ResultSet; SQL [n/a]; nested exception is org.hibernate.exception.SQLGrammarException: could not extract ResultSet, errorCause=could not extract ResultSet)] 
+2022-01-03 21:41:58,658 [http-nio-8080-exec-6] INFO  c.v.p.c.CourseController                           - CourseController: Entering into the getAllJobswithSortAndPagiDesc method 
+2022-01-03 21:41:58,660 [http-nio-8080-exec-6] INFO  c.v.p.s.ContactusService                           - ContactusService: Entering into the getAllCourseswithSortAndPagiDesc 
+2022-01-03 21:41:58,668 [http-nio-8080-exec-6] WARN  o.h.e.j.s.SqlExceptionHelper                       - SQL Error: 1054, SQLState: 42S22 
+2022-01-03 21:41:58,669 [http-nio-8080-exec-6] ERROR o.h.e.j.s.SqlExceptionHelper                       - Unknown column 'postedOn' in 'order clause' 
+2022-01-03 21:41:58,670 [http-nio-8080-exec-6] ERROR c.v.p.s.ContactusService                           - ContactusServicegot error while getting All course desending order with PulishgetAllCourseswithSortAndPagiDesccould not extract ResultSet; SQL [n/a]; nested exception is org.hibernate.exception.SQLGrammarException: could not extract ResultSet 
+2022-01-03 21:41:58,677 [http-nio-8080-exec-6] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver    - Resolved [HRPortalException(statusCode=404, message=could not extract ResultSet; SQL [n/a]; nested exception is org.hibernate.exception.SQLGrammarException: could not extract ResultSet, errorCause=could not extract ResultSet)] 
+2022-01-03 21:45:53,920 [http-nio-8080-exec-9] INFO  c.v.p.c.CourseController                           - CourseController: Entering into the getAllJobswithSortAndPagiDesc method 
+2022-01-03 21:45:53,921 [http-nio-8080-exec-9] INFO  c.v.p.s.ContactusService                           - ContactusService: Entering into the getAllCourseswithSortAndPagiDesc 
+2022-01-03 21:45:53,974 [http-nio-8080-exec-9] INFO  c.v.p.c.CourseController                           - CourseController: Existing from  getAllJobswithSortAndPagiDesc method 
+2022-01-03 22:11:15,014 [Thread-15] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean     - Closing JPA EntityManagerFactory for persistence unit 'default' 
+2022-01-03 22:11:15,019 [Thread-15] INFO  c.z.h.HikariDataSource                             - HikariPool-4 - Shutdown initiated... 
+2022-01-03 22:11:15,029 [Thread-15] INFO  c.z.h.HikariDataSource                             - HikariPool-4 - Shutdown completed. 
+2022-01-03 22:11:15,786 [restartedMain] INFO  c.v.p.SpringBootApplication                        - Starting SpringBootApplication using Java 15.0.2 on vinnu-PC with PID 2792 (D:\VinnuPortal\VinnuPortal\target\classes started by vinnu in D:\VinnuPortal\VinnuPortal) 
+2022-01-03 22:11:15,787 [restartedMain] INFO  c.v.p.SpringBootApplication                        - No active profile set, falling back to default profiles: default 
+2022-01-03 22:11:16,492 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate          - Bootstrapping Spring Data JPA repositories in DEFAULT mode. 
+2022-01-03 22:11:16,566 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate          - Finished Spring Data repository scanning in 73 ms. Found 9 JPA repository interfaces. 
+2022-01-03 22:11:16,707 [restartedMain] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler@165c4acd' of type [org.springframework.security.access.expression.method.DefaultMethodSecurityExpressionHandler] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying) 
+2022-01-03 22:11:16,711 [restartedMain] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'methodSecurityMetadataSource' of type [org.springframework.security.access.method.DelegatingMethodSecurityMetadataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying) 
+2022-01-03 22:11:16,824 [restartedMain] INFO  o.s.b.w.e.t.TomcatWebServer                        - Tomcat initialized with port(s): 8080 (http) 
+2022-01-03 22:11:16,825 [restartedMain] INFO  o.a.c.h.Http11NioProtocol                          - Initializing ProtocolHandler ["http-nio-8080"] 
+2022-01-03 22:11:16,826 [restartedMain] INFO  o.a.c.c.StandardService                            - Starting service [Tomcat] 
+2022-01-03 22:11:16,826 [restartedMain] INFO  o.a.c.c.StandardEngine                             - Starting Servlet engine: [Apache Tomcat/9.0.54] 
+2022-01-03 22:11:16,912 [restartedMain] INFO  o.a.c.c.C.[.[.[/]                                  - Initializing Spring embedded WebApplicationContext 
+2022-01-03 22:11:16,913 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext     - Root WebApplicationContext: initialization completed in 1088 ms 
+2022-01-03 22:11:17,007 [restartedMain] INFO  o.h.j.i.u.LogHelper                                - HHH000204: Processing PersistenceUnitInfo [name: default] 
+2022-01-03 22:11:17,019 [restartedMain] INFO  c.z.h.HikariDataSource                             - HikariPool-5 - Starting... 
+2022-01-03 22:11:17,029 [restartedMain] INFO  c.z.h.HikariDataSource                             - HikariPool-5 - Start completed. 
+2022-01-03 22:11:17,030 [restartedMain] INFO  o.h.d.Dialect                                      - HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect 
+2022-01-03 22:11:17,663 [restartedMain] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator                 - HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform] 
+2022-01-03 22:11:17,666 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean     - Initialized JPA EntityManagerFactory for persistence unit 'default' 
+2022-01-03 22:11:17,806 [restartedMain] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning 

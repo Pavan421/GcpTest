@@ -34,7 +34,6 @@ import lombok.NoArgsConstructor;
 public class Project {
 	@Id
 	@Column(name = "project_id")
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String projectName;
 	private String projectDesc;

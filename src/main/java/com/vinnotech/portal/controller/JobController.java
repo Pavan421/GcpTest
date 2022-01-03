@@ -114,7 +114,7 @@ public class JobController {
 
 	/**
 	 * This method is used to get all published jobs in the Home Page with
-	 * pagination and sorting with desending order
+	 * pagination and sorting with descending order
 	 * 
 	 * @param publish
 	 * @param offset
@@ -122,7 +122,6 @@ public class JobController {
 	 * @param field
 	 * @return
 	 */
-	@PreAuthorize(HRPortalConstants.ROLE_ADMIN_HR_RECRUITER_ONLY)
 	@GetMapping("/sppublishdesc/{publish}/{offset}/{pageSize}/{field}")
 	public ResponseEntity<Page<Job>> getAllJobswithSortAndPagiDesc(@PathVariable("publish") boolean publish,
 			@PathVariable("offset") int offset, @PathVariable("pageSize") int pageSize,

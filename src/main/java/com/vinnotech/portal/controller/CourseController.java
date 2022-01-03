@@ -40,6 +40,7 @@ public class CourseController {
 	 * @param course
 	 * @return
 	 */
+	@PreAuthorize(HRPortalConstants.ROLE_ADMIN_HR_RECRUITER_ONLY)
 	@PostMapping("/create")
 	public ResponseEntity<String> createCourse(@RequestBody Course course) {
 		String methodName = "createCourse";
@@ -156,7 +157,6 @@ public class CourseController {
 	 * @param field
 	 * @return
 	 */
-	@PreAuthorize(HRPortalConstants.ROLE_ADMIN_HR_RECRUITER_ONLY)
 	@GetMapping("/sppublishdesc/{publish}/{offset}/{pageSize}/{field}")
 	public ResponseEntity<Page<Course>> getAllCourseswithSortAndPagiDesc(@PathVariable("publish") boolean publish,
 			@PathVariable("offset") int offset, @PathVariable("pageSize") int pageSize,
@@ -215,7 +215,7 @@ public class CourseController {
 	}
 
 	/**
-	 * search all courses by search term
+	 * search all courses by search term Home Page public access
 	 * 
 	 * @param publish
 	 * @param serachParam

@@ -38,7 +38,7 @@ public class CustomJwtAuthenticationFilter extends OncePerRequestFilter {
 				UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(
 						userDetails, "", jwtUtil.getRolesFromToken(jwtToken));
 				SecurityContextHolder.getContext().setAuthentication(usernamePasswordAuthenticationToken);
-			} 
+			}
 		} catch (ExpiredJwtException ex) {
 			String isRefreshToken = request.getHeader(HRPortalConstants.IS_REFRESH_TOKEN);
 			String requestUrl = request.getRequestURL().toString();
