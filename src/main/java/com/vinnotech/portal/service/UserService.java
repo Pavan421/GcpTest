@@ -76,7 +76,7 @@ public class UserService {
 			return "Password reseted successfully";
 		} catch (Exception e) {
 			LOGGER.error(CLASSNAME + "got error while reseting Password " + methodName + e.getMessage());
-			throw new HRPortalException(HttpStatus.NOT_FOUND.value(), e.getMessage(), e.getCause().getMessage());
+			throw new HRPortalException(HttpStatus.NOT_FOUND.value(), "user is not found with username", "");
 		}
 	}
 
@@ -122,7 +122,7 @@ public class UserService {
 			}
 
 		} catch (Exception e) {
-			throw new HRPortalException(HttpStatus.NOT_FOUND.value(), e.getMessage(), e.getCause().getMessage());
+			throw new HRPortalException(HttpStatus.NOT_FOUND.value(), "user not found to change password", "");
 		}
 	}
 }
