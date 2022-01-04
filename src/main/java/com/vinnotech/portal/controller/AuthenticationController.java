@@ -31,7 +31,7 @@ import com.vinnotech.portal.repository.UserRepository;
 
 import io.jsonwebtoken.impl.DefaultClaims;
 
-@CrossOrigin(origins = "*")
+@CrossOrigin
 @RestController
 public class AuthenticationController {
 
