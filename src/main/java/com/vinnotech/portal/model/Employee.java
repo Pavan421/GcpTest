@@ -47,7 +47,7 @@ public class Employee {
 	private String designation;
 	private String officialEmailId;
 	private String personalEmailId;
-	private int mobileNumber;
+	private Long mobileNumber;
 	private String shortDesc;
 	// Area of Work//Technologies
 	private String accRole;
@@ -95,7 +95,7 @@ public class Employee {
 	@OneToOne(fetch = FetchType.EAGER, optional = true, cascade = CascadeType.ALL)
 	private EmergencyContact emergencyContact;
 
-	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinTable(name = "employees_projects", joinColumns = @JoinColumn(name = "emp_id"), inverseJoinColumns = @JoinColumn(name = "project_id"))
 	@JsonIgnore
 	private List<Project> projects = new ArrayList<>();

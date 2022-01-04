@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.vinnotech.portal.model.HRPortalConstants;
+import com.vinnotech.portal.model.PreviousCompany;
 import com.vinnotech.portal.model.Project;
 import com.vinnotech.portal.service.ProjectService;
 
@@ -100,5 +101,17 @@ public class ProjectController {
 		header.add("desc", "Deleting Projects");
 		LOGGER.info(CLASSNAME + ": Existing from  " + methodName + " method");
 		return ResponseEntity.status(HttpStatus.OK).headers(header).body(DeletedProject);
+	}
+	
+	@PreAuthorize(HRPortalConstants.ROLE_ADMIN_HR_ONLY)
+	@GetMapping("/emp/{empId}")
+	public ResponseEntity<List<Project>> getProjectDetails(@PathVariable("empId") Long empId) {
+		String methodName = "getProjectDetails";
+		LOGGER.info(CLASSNAME + " entering into the " + methodName + " method");
+		List<Project> projects = projectService.getProjectDetails(empId);
+		HttpHeaders headers = new HttpHeaders();
+		headers.add("desc", "getting Project Details");
+		LOGGER.info(CLASSNAME + " existing from " + methodName + " method");
+		return ResponseEntity.status(HttpStatus.OK).headers(headers).body(projects);
 	}
 }

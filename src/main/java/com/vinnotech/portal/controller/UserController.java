@@ -31,8 +31,7 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 
-	@PreAuthorize(HRPortalConstants.ROLE_ADMIN_HR_ONLY)
-	@GetMapping("/resetpassword/{username}")
+	@PutMapping("/resetpassword/{username}")
 	public ResponseEntity<String> forgotPassword(@PathParam("username") String username) {
 		String methodName = "forgotPassword";
 		LOGGER.info(CLASSNAME + ": Entering into the " + methodName);
@@ -43,7 +42,7 @@ public class UserController {
 		return ResponseEntity.status(HttpStatus.OK).headers(header).body(successResponse);
 	}
 
-	@PreAuthorize(HRPortalConstants.ROLE_ADMIN_HR_ONLY)
+	@PreAuthorize(HRPortalConstants.ROLE_ADMIN_HR_RECRUITER_EMPLOYEE_ONLY)
 	@PutMapping("/changepassword")
 	public ResponseEntity<String> changePassword(@RequestBody ChangePwd changePwd) {
 		String methodName = "changePassword";

@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.vinnotech.portal.exception.HRPortalException;
 import com.vinnotech.portal.model.Employee;
+import com.vinnotech.portal.model.PreviousCompany;
 import com.vinnotech.portal.model.Project;
 import com.vinnotech.portal.repository.EmployeeRepository;
 import com.vinnotech.portal.repository.ProjectRepository;
@@ -97,6 +98,20 @@ public class ProjectService {
 			return "Deleted Project sucsessfully";
 		} catch (Exception e) {
 			LOGGER.error(CLASSNAME + ": got error while Deleting Project " + methodName + e.getMessage());
+			throw new HRPortalException(HttpStatus.BAD_REQUEST.value(), e.getMessage(), e.getCause().getMessage());
+		}
+	}
+	
+	public List<Project> getProjectDetails(Long empId){
+		String methodName = "getProjectDetails ";
+		LOGGER.info(CLASSNAME + ": Entering into the " + methodName);
+		try {
+			Employee emp = employeeRepository.findById(empId).get();
+			List<Project> projects = emp.getProjects();
+			LOGGER.info(CLASSNAME + ": Existing from  " + methodName + " method");
+			return projects;
+		} catch (Exception e) {
+			LOGGER.error(CLASSNAME + "got error while getting Project Details" + methodName + e.getMessage());
 			throw new HRPortalException(HttpStatus.BAD_REQUEST.value(), e.getMessage(), e.getCause().getMessage());
 		}
 	}

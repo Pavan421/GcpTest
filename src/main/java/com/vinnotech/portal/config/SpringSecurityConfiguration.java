@@ -50,7 +50,7 @@ public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter {
 						"/**/*.woff", "/**/*.eot", "/**/*.ttf", "/**/*.ttc", "/**/*.ico", "/**/*.bmp", "/**/*.png",
 						"/**/*.txt", "/**/*.gif", "/**/*.svg", "/**/*.jpg", "/**/*.jpeg", "/**/*.html", "/**/*.css",
 						"/**/*.map", "/**/*.js", "/api/courses/sppublishdesc/{publish}/{offset}/{pageSize}/{field}",
-						"/api/studentack/create/{courseId}",
+						"/api/studentack/create/{courseId}", "/api/user/resetpassword/{username}",
 						"/api/courses/searchcourseByParam/{publish}/{serachParam}/{offset}/{pageSize}",
 						"/api/jobs/sppublishdesc/{publish}/{offset}/{pageSize}/{field}", "/api/joback/create/{jobId}",
 						"/api/jobs/searchJobsByParam/{publish}/{searchparam}/{offset}/{pageSize}",
