@@ -19,7 +19,7 @@ import com.vinnotech.portal.model.BankDetails;
 import com.vinnotech.portal.model.HRPortalConstants;
 import com.vinnotech.portal.service.BankDetailsService;
 
-@CrossOrigin
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/api/bankdetails")
 public class BankDetailsController {

@@ -28,7 +28,7 @@ import com.vinnotech.portal.model.HRPortalConstants;
 import com.vinnotech.portal.model.JobsAcknowledgement;
 import com.vinnotech.portal.service.JobAckService;
 
-@CrossOrigin
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/api/joback")
 public class JobAckController {
@@ -123,8 +123,9 @@ public class JobAckController {
 		jobAck.setLocation(location);
 		jobAck.setCountry(country);
 		File fileObj = HRPortalHelper.convertMultiPartFileToFile(file);
-		//System.out.println("file.getOriginalFilename()" + file.getOriginalFilename());
-		String resumePath = firstName+"_"+phoneNo+"."+file.getOriginalFilename().split("\\.")[1];		
+		// System.out.println("file.getOriginalFilename()" +
+		// file.getOriginalFilename());
+		String resumePath = firstName + "_" + phoneNo + "." + file.getOriginalFilename().split("\\.")[1];
 		s3Client.putObject(new PutObjectRequest(bucketName, resumePath, fileObj));
 		fileObj.delete();
 		jobAck.setResumePath(resumePath);

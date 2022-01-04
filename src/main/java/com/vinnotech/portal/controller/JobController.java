@@ -21,7 +21,7 @@ import com.vinnotech.portal.model.HRPortalConstants;
 import com.vinnotech.portal.model.Job;
 import com.vinnotech.portal.service.JobService;
 
-@CrossOrigin
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/api/jobs")
 public class JobController {

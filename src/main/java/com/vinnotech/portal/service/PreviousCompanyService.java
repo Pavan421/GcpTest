@@ -32,11 +32,11 @@ public class PreviousCompanyService {
 			return "PreviousCompanyDetails Updated Successfully";
 		} catch (Exception e) {
 			LOGGER.error(CLASSNAME + "got error while updating PreviousCompanyDetails" + methodName + e.getMessage());
-			throw new HRPortalException(HttpStatus.BAD_REQUEST.value(), e.getMessage(), e.getCause().getMessage());
+			throw new HRPortalException(HttpStatus.BAD_REQUEST.value(), e.getMessage());
 		}
 	}
-	
-	public List<PreviousCompany> getPreviousCompanyDetails(Long empId){
+
+	public List<PreviousCompany> getPreviousCompanyDetails(Long empId) {
 		String methodName = "getPreviousCompanys";
 		LOGGER.info(CLASSNAME + ": Entering into the " + methodName);
 		try {
@@ -46,7 +46,7 @@ public class PreviousCompanyService {
 			return previousCompanies;
 		} catch (Exception e) {
 			LOGGER.error(CLASSNAME + "got error while getting PreviousCompanyDetails" + methodName + e.getMessage());
-			throw new HRPortalException(HttpStatus.BAD_REQUEST.value(), e.getMessage(), e.getCause().getMessage());
+			throw new HRPortalException(HttpStatus.BAD_REQUEST.value(), e.getMessage());
 		}
 	}
 }

@@ -21,7 +21,7 @@ import com.vinnotech.portal.model.Address;
 import com.vinnotech.portal.model.HRPortalConstants;
 import com.vinnotech.portal.service.AddressService;
 
-@CrossOrigin
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/api/address")
 public class AddressController {

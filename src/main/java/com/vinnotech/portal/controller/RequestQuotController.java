@@ -20,7 +20,7 @@ import com.vinnotech.portal.model.HRPortalConstants;
 import com.vinnotech.portal.model.RequestQuot;
 import com.vinnotech.portal.service.RequestQuotService;
 
-@CrossOrigin
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/api/reqquot")
 public class RequestQuotController {

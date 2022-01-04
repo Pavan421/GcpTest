@@ -22,19 +22,19 @@ public class AddressService {
 
 	@Autowired
 	private EmployeeRepository employeeRepository;
- 
+
 	public String addPAddress(Address address, Long empId) {
 		String methodName = "addPAddress";
 		LOGGER.info(CLASSNAME + ": Entering into the " + methodName);
 		try {
-		Employee emp = employeeRepository.findById(empId).get();
-		emp.setPermanentAddress(address);
-		employeeRepository.save(emp);
-		LOGGER.info(CLASSNAME + ": Existing into the " + methodName);
-		return "Permanent Address added Successfully";
-		}catch (Exception e) {
+			Employee emp = employeeRepository.findById(empId).get();
+			emp.setPermanentAddress(address);
+			employeeRepository.save(emp);
+			LOGGER.info(CLASSNAME + ": Existing into the " + methodName);
+			return "Permanent Address added Successfully";
+		} catch (Exception e) {
 			LOGGER.error(CLASSNAME + "got error while creating Course " + methodName + e.getMessage());
-			throw new HRPortalException(HttpStatus.BAD_REQUEST.value(), e.getMessage(), e.getCause().getMessage());
+			throw new HRPortalException(HttpStatus.BAD_REQUEST.value(), e.getMessage());
 		}
 	}
 
@@ -42,32 +42,32 @@ public class AddressService {
 		String methodName = "addCAddress";
 		LOGGER.info(CLASSNAME + ": Entering into the " + methodName);
 		try {
-		Employee emp = employeeRepository.findById(empId).get();
-		emp.setCurrentAddress(address);
-		employeeRepository.save(emp);
-		LOGGER.info(CLASSNAME + ": Existing into the " + methodName);
-		return "Current Address added Successfully";
-		}catch (Exception e) {
+			Employee emp = employeeRepository.findById(empId).get();
+			emp.setCurrentAddress(address);
+			employeeRepository.save(emp);
+			LOGGER.info(CLASSNAME + ": Existing into the " + methodName);
+			return "Current Address added Successfully";
+		} catch (Exception e) {
 			LOGGER.error(CLASSNAME + "got error while creating Course " + methodName + e.getMessage());
-			throw new HRPortalException(HttpStatus.BAD_REQUEST.value(), e.getMessage(), e.getCause().getMessage());
+			throw new HRPortalException(HttpStatus.BAD_REQUEST.value(), e.getMessage());
 		}
 	}
-	
+
 	public List<Address> getEmpAddress(Long empId) {
 		String methodName = "getEmpAddress";
 		LOGGER.info(CLASSNAME + ": Entering into the " + methodName);
 		try {
-			Employee emp=employeeRepository.findById(empId).get();
-			Address empPAddress=emp.getPermanentAddress();
-			Address empCAddress=emp.getCurrentAddress();
+			Employee emp = employeeRepository.findById(empId).get();
+			Address empPAddress = emp.getPermanentAddress();
+			Address empCAddress = emp.getCurrentAddress();
 			List<Address> empAddressList = new ArrayList<Address>();
 			empAddressList.add(empPAddress);
 			empAddressList.add(empCAddress);
 			LOGGER.info(CLASSNAME + ": Existing from  " + methodName + " method");
 			return empAddressList;
-		}catch(Exception e) {
+		} catch (Exception e) {
 			LOGGER.error(CLASSNAME + "got error while getting Employee Address" + methodName + e.getMessage());
-			throw new HRPortalException(HttpStatus.BAD_REQUEST.value(), e.getMessage(), e.getCause().getMessage());
+			throw new HRPortalException(HttpStatus.BAD_REQUEST.value(), e.getMessage());
 		}
 	}
 }

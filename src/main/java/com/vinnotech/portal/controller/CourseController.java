@@ -23,7 +23,7 @@ import com.vinnotech.portal.model.Course;
 import com.vinnotech.portal.model.HRPortalConstants;
 import com.vinnotech.portal.service.CourseService;
 
-@CrossOrigin
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/api/courses")
 public class CourseController {

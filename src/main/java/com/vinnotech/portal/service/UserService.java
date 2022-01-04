@@ -68,15 +68,16 @@ public class UserService {
 						+ "</b></div>\n"
 						+ "<div><b><h4>Your password got reseted Successfully please find the below details</h4></b></div>\n"
 						+ "<div>Your username : <b>" + u.getUsername() + "</b></div>\n" + "\n"
-						+ "<div>Your password : <b>" + generatedPwd + "</b></div>\n" + "<div>  <b>best regards</b></div>\n"
-						+ "<div> <b> admin</b></div>\n" + "</body>\n" + "</html>\n";
+						+ "<div>Your password : <b>" + generatedPwd + "</b></div>\n"
+						+ "<div>  <b>best regards</b></div>\n" + "<div> <b> admin</b></div>\n" + "</body>\n"
+						+ "</html>\n";
 				emailService.sendMail(emp.getOfficialEmailId(), "cloudcare", html);
 			}
 			LOGGER.info(CLASSNAME + ": Existing from  " + methodName + " method");
 			return "Password reseted successfully";
 		} catch (Exception e) {
 			LOGGER.error(CLASSNAME + "got error while reseting Password " + methodName + e.getMessage());
-			throw new HRPortalException(HttpStatus.NOT_FOUND.value(), "user is not found with username", "");
+			throw new HRPortalException(HttpStatus.NOT_FOUND.value(), "user is not found with username");
 		}
 	}
 
@@ -115,14 +116,14 @@ public class UserService {
 
 					return "Password Changed Successfully";
 				} else {
-					throw new HRPortalException(HttpStatus.BAD_REQUEST.value(), "Your current password is incorrect :", "without current password you con't change Password");
+					throw new HRPortalException(HttpStatus.BAD_REQUEST.value(), "Your current password is incorrect :");
 				}
 			} else {
-				throw new HRPortalException(HttpStatus.BAD_REQUEST.value(), "Password must be minimum 8 charecters and should match new password and confirm password :", "");
+				throw new HRPortalException(HttpStatus.BAD_REQUEST.value(),
+						"Password must be minimum 8 charecters and should match new password and confirm password :");
 			}
-
 		} catch (Exception e) {
-			throw new HRPortalException(HttpStatus.NOT_FOUND.value(), "user not found to change password", "");
+			throw new HRPortalException(HttpStatus.NOT_FOUND.value(), "user not found to change password");
 		}
 	}
 }

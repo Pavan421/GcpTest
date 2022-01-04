@@ -24,7 +24,7 @@ import com.vinnotech.portal.model.PreviousCompany;
 import com.vinnotech.portal.model.Project;
 import com.vinnotech.portal.service.ProjectService;
 
-@CrossOrigin
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/api/projects")
 public class ProjectController {

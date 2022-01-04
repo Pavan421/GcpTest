@@ -42,7 +42,7 @@ public class CourseService {
 			return "course created sucsessfully";
 		} catch (Exception e) {
 			LOGGER.error(CLASSNAME + "got error while creating Course " + methodName + e.getMessage());
-			throw new HRPortalException(HttpStatus.BAD_REQUEST.value(), e.getMessage(), e.getCause().getMessage());
+			throw new HRPortalException(HttpStatus.BAD_REQUEST.value(), e.getMessage());
 		}
 	}
 
@@ -63,7 +63,7 @@ public class CourseService {
 			return "Updated Course sucsessfully";
 		} catch (Exception e) {
 			LOGGER.error(CLASSNAME + "got error while updating Course " + methodName + e.getMessage());
-			throw new HRPortalException(HttpStatus.BAD_REQUEST.value(), e.getMessage(), e.getCause().getMessage());
+			throw new HRPortalException(HttpStatus.BAD_REQUEST.value(), e.getMessage());
 		}
 	}
 
@@ -83,7 +83,7 @@ public class CourseService {
 		} catch (Exception e) {
 
 			LOGGER.error(CLASSNAME + "got error while getting course " + methodName + e.getMessage());
-			throw new HRPortalException(HttpStatus.NOT_FOUND.value(), e.getMessage() + ":", "");
+			throw new HRPortalException(HttpStatus.NOT_FOUND.value(), e.getMessage() + ":");
 		}
 	}
 
@@ -99,7 +99,7 @@ public class CourseService {
 			return courseRepository.findAll();
 		} catch (Exception e) {
 			LOGGER.error(CLASSNAME + "got error while getting All Job desending " + methodName + e.getMessage());
-			throw new HRPortalException(HttpStatus.NOT_FOUND.value(), e.getMessage(), e.getCause().getMessage());
+			throw new HRPortalException(HttpStatus.NOT_FOUND.value(), e.getMessage());
 		}
 	}
 
@@ -118,7 +118,7 @@ public class CourseService {
 			return "Course sucsessfully deleted";
 		} catch (Exception e) {
 			LOGGER.error(CLASSNAME + "got error while deleting Corurse " + methodName + e.getMessage());
-			throw new HRPortalException(HttpStatus.NOT_FOUND.value(), e.getMessage(), e.getCause().getMessage());
+			throw new HRPortalException(HttpStatus.NOT_FOUND.value(), e.getMessage());
 		}
 	}
 
@@ -140,7 +140,7 @@ public class CourseService {
 			return pageCoursesDesc;
 		} catch (Exception e) {
 			LOGGER.error(CLASSNAME + "got error while getting All Course desending" + methodName + e.getMessage());
-			throw new HRPortalException(HttpStatus.NOT_FOUND.value(), e.getMessage(), e.getCause().getMessage());
+			throw new HRPortalException(HttpStatus.NOT_FOUND.value(), e.getMessage());
 		}
 	}
 
@@ -163,7 +163,7 @@ public class CourseService {
 			return pageCoursesAse;
 		} catch (Exception e) {
 			LOGGER.error(CLASSNAME + "got error while getting All course Asending" + methodName + e.getMessage());
-			throw new HRPortalException(HttpStatus.NOT_FOUND.value(), e.getMessage(), e.getCause().getMessage());
+			throw new HRPortalException(HttpStatus.NOT_FOUND.value(), e.getMessage());
 		}
 	}
 
@@ -188,7 +188,7 @@ public class CourseService {
 		} catch (Exception e) {
 			LOGGER.error(CLASSNAME + "got error while getting All course desending order with Pulish" + methodName
 					+ e.getMessage());
-			throw new HRPortalException(HttpStatus.NOT_FOUND.value(), e.getMessage(), e.getCause().getMessage());
+			throw new HRPortalException(HttpStatus.NOT_FOUND.value(), e.getMessage());
 		}
 	}
 
@@ -214,7 +214,7 @@ public class CourseService {
 		} catch (Exception e) {
 			LOGGER.error(CLASSNAME + "got error while getting All course Asending order with Pulish" + methodName
 					+ e.getMessage());
-			throw new HRPortalException(HttpStatus.NOT_FOUND.value(), e.getMessage(), e.getCause().getMessage());
+			throw new HRPortalException(HttpStatus.NOT_FOUND.value(), e.getMessage());
 		}
 	}
 
@@ -239,7 +239,7 @@ public class CourseService {
 			return searchResult;
 		} catch (Exception e) {
 			LOGGER.error(CLASSNAME + "got error while searching" + methodName + e.getMessage());
-			throw new HRPortalException(HttpStatus.NOT_FOUND.value(), e.getMessage(), e.getCause().getMessage());
+			throw new HRPortalException(HttpStatus.NOT_FOUND.value(), e.getMessage());
 		}
 	}
 
@@ -260,7 +260,7 @@ public class CourseService {
 			return searchResult;
 		} catch (Exception e) {
 			LOGGER.error(CLASSNAME + "got error while Searching Courses" + methodName + e.getMessage());
-			throw new HRPortalException(HttpStatus.NOT_FOUND.value(), e.getMessage(), e.getCause().getMessage());
+			throw new HRPortalException(HttpStatus.NOT_FOUND.value(), e.getMessage());
 		}
 	}
 }

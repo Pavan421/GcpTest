@@ -21,7 +21,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.vinnotech.portal.model.HRPortalConstants;
 import com.vinnotech.portal.service.StorageService;
 
-@CrossOrigin
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/file")
 public class StorageController {

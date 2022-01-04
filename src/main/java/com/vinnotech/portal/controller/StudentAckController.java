@@ -23,7 +23,7 @@ import com.vinnotech.portal.model.HRPortalConstants;
 import com.vinnotech.portal.model.StudentAck;
 import com.vinnotech.portal.service.StudentAckService;
 
-@CrossOrigin
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/api/studentack")
 public class StudentAckController {

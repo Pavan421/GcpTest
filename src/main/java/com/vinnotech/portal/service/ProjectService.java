@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 
 import com.vinnotech.portal.exception.HRPortalException;
 import com.vinnotech.portal.model.Employee;
-import com.vinnotech.portal.model.PreviousCompany;
 import com.vinnotech.portal.model.Project;
 import com.vinnotech.portal.repository.EmployeeRepository;
 import com.vinnotech.portal.repository.ProjectRepository;
@@ -43,7 +42,7 @@ public class ProjectService {
 			return "created Project sucsessfully";
 		} catch (Exception e) {
 			LOGGER.error(CLASSNAME + ": got error while creating Project " + methodName + e.getMessage());
-			throw new HRPortalException(HttpStatus.BAD_REQUEST.value(), e.getMessage(), e.getCause().getMessage());
+			throw new HRPortalException(HttpStatus.BAD_REQUEST.value(), e.getMessage());
 		}
 	}
 
@@ -59,7 +58,7 @@ public class ProjectService {
 			return "Assigned Project sucsessfully";
 		} catch (Exception e) {
 			LOGGER.error(CLASSNAME + ": got error while Assigning Project " + methodName + e.getMessage());
-			throw new HRPortalException(HttpStatus.BAD_REQUEST.value(), e.getMessage(), e.getCause().getMessage());
+			throw new HRPortalException(HttpStatus.BAD_REQUEST.value(), e.getMessage());
 		}
 	}
 
@@ -72,7 +71,7 @@ public class ProjectService {
 			return project;
 		} catch (Exception e) {
 			LOGGER.error(CLASSNAME + ": got error while getting Project " + methodName + e.getMessage());
-			throw new HRPortalException(HttpStatus.BAD_REQUEST.value(), e.getMessage(), e.getCause().getMessage());
+			throw new HRPortalException(HttpStatus.BAD_REQUEST.value(), e.getMessage());
 		}
 	}
 
@@ -85,7 +84,7 @@ public class ProjectService {
 			return projects;
 		} catch (Exception e) {
 			LOGGER.error(CLASSNAME + ": got error while getting Projects " + methodName + e.getMessage());
-			throw new HRPortalException(HttpStatus.BAD_REQUEST.value(), e.getMessage(), e.getCause().getMessage());
+			throw new HRPortalException(HttpStatus.BAD_REQUEST.value(), e.getMessage());
 		}
 	}
 
@@ -98,11 +97,11 @@ public class ProjectService {
 			return "Deleted Project sucsessfully";
 		} catch (Exception e) {
 			LOGGER.error(CLASSNAME + ": got error while Deleting Project " + methodName + e.getMessage());
-			throw new HRPortalException(HttpStatus.BAD_REQUEST.value(), e.getMessage(), e.getCause().getMessage());
+			throw new HRPortalException(HttpStatus.BAD_REQUEST.value(), e.getMessage());
 		}
 	}
-	
-	public List<Project> getProjectDetails(Long empId){
+
+	public List<Project> getProjectDetails(Long empId) {
 		String methodName = "getProjectDetails ";
 		LOGGER.info(CLASSNAME + ": Entering into the " + methodName);
 		try {
@@ -112,7 +111,7 @@ public class ProjectService {
 			return projects;
 		} catch (Exception e) {
 			LOGGER.error(CLASSNAME + "got error while getting Project Details" + methodName + e.getMessage());
-			throw new HRPortalException(HttpStatus.BAD_REQUEST.value(), e.getMessage(), e.getCause().getMessage());
+			throw new HRPortalException(HttpStatus.BAD_REQUEST.value(), e.getMessage());
 		}
 	}
 }

@@ -9,6 +9,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -19,9 +20,9 @@ import com.vinnotech.portal.model.ContactUS;
 import com.vinnotech.portal.model.HRPortalConstants;
 import com.vinnotech.portal.service.ContactusService;
 
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("api/contactus")
-
 public class ContactusController {
 
 	private static final String CLASSNAME = "ContactusController";
@@ -40,7 +41,7 @@ public class ContactusController {
 		LOGGER.info(CLASSNAME + ": Existing from  " + methodName + " method");
 		return ResponseEntity.status(HttpStatus.OK).headers(header).body(contactUs);
 	}
-	
+
 	@PreAuthorize(HRPortalConstants.ROLE_ADMIN_HR_ONLY)
 	@GetMapping
 	public ResponseEntity<List<ContactUS>> contactus() {

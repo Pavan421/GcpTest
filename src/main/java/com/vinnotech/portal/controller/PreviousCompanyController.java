@@ -21,7 +21,7 @@ import com.vinnotech.portal.model.HRPortalConstants;
 import com.vinnotech.portal.model.PreviousCompany;
 import com.vinnotech.portal.service.PreviousCompanyService;
 
-@CrossOrigin
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/api/previouscompany")
 public class PreviousCompanyController {

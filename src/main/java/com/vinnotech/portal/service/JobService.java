@@ -40,7 +40,7 @@ public class JobService {
 			return "created Job sucsessfully";
 		} catch (Exception e) {
 			LOGGER.error(CLASSNAME + "got error while creating job " + methodName + e.getMessage());
-			throw new HRPortalException(HttpStatus.BAD_REQUEST.value(), e.getMessage(), e.getCause().getMessage());
+			throw new HRPortalException(HttpStatus.BAD_REQUEST.value(), e.getMessage());
 		}
 	}
 
@@ -59,7 +59,7 @@ public class JobService {
 			return job;
 		} catch (Exception e) {
 			LOGGER.error(CLASSNAME + "got error while getting job " + methodName + e.getMessage());
-			throw new HRPortalException(HttpStatus.NOT_FOUND.value(), "Record not found with id " + id + ":", "");
+			throw new HRPortalException(HttpStatus.NOT_FOUND.value(), "Record not found with id " + id + ":");
 		}
 	}
 
@@ -78,7 +78,7 @@ public class JobService {
 			return "Job Deleted successfully";
 		} catch (Exception e) {
 			LOGGER.error(CLASSNAME + "got error while getting job " + methodName + e.getMessage());
-			throw new HRPortalException(HttpStatus.NOT_FOUND.value(), e.getMessage(), e.getCause().getMessage());
+			throw new HRPortalException(HttpStatus.NOT_FOUND.value(), e.getMessage());
 		}
 	}
 
@@ -100,7 +100,7 @@ public class JobService {
 			return getAllJobsDesc;
 		} catch (Exception e) {
 			LOGGER.error(CLASSNAME + "got error while getting All Job desending " + methodName + e.getMessage());
-			throw new HRPortalException(HttpStatus.NOT_FOUND.value(), e.getMessage(), e.getCause().getMessage());
+			throw new HRPortalException(HttpStatus.NOT_FOUND.value(), e.getMessage());
 		}
 	}
 
@@ -122,7 +122,7 @@ public class JobService {
 			return getAllJobsAse;
 		} catch (Exception e) {
 			LOGGER.error(CLASSNAME + "got error while getting All Job Asending" + methodName + e.getMessage());
-			throw new HRPortalException(HttpStatus.NOT_FOUND.value(), e.getMessage(), e.getCause().getMessage());
+			throw new HRPortalException(HttpStatus.NOT_FOUND.value(), e.getMessage());
 		}
 	}
 
@@ -148,7 +148,7 @@ public class JobService {
 		} catch (Exception e) {
 			LOGGER.error(CLASSNAME + "got error while getting All Job with publish and desending" + methodName
 					+ e.getMessage());
-			throw new HRPortalException(HttpStatus.NOT_FOUND.value(), e.getMessage(), e.getCause().getMessage());
+			throw new HRPortalException(HttpStatus.NOT_FOUND.value(), e.getMessage());
 		}
 	}
 
@@ -174,7 +174,7 @@ public class JobService {
 		} catch (Exception e) {
 			LOGGER.error(CLASSNAME + "got error while getting All Job with publish and asending" + methodName
 					+ e.getMessage());
-			throw new HRPortalException(HttpStatus.NOT_FOUND.value(), e.getMessage(), e.getCause().getMessage());
+			throw new HRPortalException(HttpStatus.NOT_FOUND.value(), e.getMessage());
 		}
 	}
 
@@ -200,7 +200,7 @@ public class JobService {
 		} catch (Exception e) {
 			LOGGER.error(CLASSNAME + ": got error while Searching " + methodName
 					+ e.getMessage());
-			throw new HRPortalException(HttpStatus.NOT_FOUND.value(), e.getMessage(), e.getCause().getMessage());
+			throw new HRPortalException(HttpStatus.NOT_FOUND.value(), e.getMessage());
 		}
 	}
 	
@@ -222,7 +222,7 @@ public class JobService {
 		} catch (Exception e) {
 			LOGGER.error(CLASSNAME + ": got error while Searching " + methodName
 					+ e.getMessage());
-			throw new HRPortalException(HttpStatus.NOT_FOUND.value(), e.getMessage(), e.getCause().getMessage());
+			throw new HRPortalException(HttpStatus.NOT_FOUND.value(), e.getMessage());
 		}
 	}
 }

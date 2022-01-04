@@ -26,11 +26,13 @@ public class StorageService {
 
 	private static final String CLASSNAME = "StorageService ";
 	private static final Logger LOGGER = LoggerFactory.getLogger(StorageService.class);
+
 	@Value("${application.bucket.name}")
 	private String bucketName;
 
 	@Autowired
 	private AmazonS3 s3Client;
+
 	@Autowired
 	private EmployeeRepository empRepository;
 
@@ -38,33 +40,33 @@ public class StorageService {
 		String methodName = "uploadFile";
 		LOGGER.info(CLASSNAME + ": Entering into the " + methodName);
 		try {
-		File fileObj = convertMultiPartFileToFile(file);
-		String fileName = empId + "_" + name + "." + file.getOriginalFilename().split(".")[1];
-		s3Client.putObject(new PutObjectRequest(bucketName, fileName, fileObj));
-		fileObj.delete();
-		Optional<Employee> employee = empRepository.findById(Long.parseLong(empId));
-		if (employee.isPresent() && !employee.get().isEmployeeDeleted()) {
-			Employee emp = employee.get();
-			if (name.equals("pancard")) {
-				emp.setPanCardPath(fileName);
-				emp.setPanNumber(value);
-			} else if (name.equals("passport")) {
-				emp.setPassportNumber(value);
-				emp.setPassportPath(fileName);
-			} else if (name.equals("personalnumber")) {
-				emp.setPersonalNumberPath(fileName);
-				emp.setPersonalNumber(value);
-			} else if (name.equals("resume")) {
-				emp.setResumePath(fileName);
-			} else if (name.equals("photo")) {
-				emp.setPhotoPath(fileName);
+			File fileObj = convertMultiPartFileToFile(file);
+			String fileName = empId + "_" + name + "." + file.getOriginalFilename().split(".")[1];
+			s3Client.putObject(new PutObjectRequest(bucketName, fileName, fileObj));
+			fileObj.delete();
+			Optional<Employee> employee = empRepository.findById(Long.parseLong(empId));
+			if (employee.isPresent() && !employee.get().isEmployeeDeleted()) {
+				Employee emp = employee.get();
+				if (name.equals("pancard")) {
+					emp.setPanCardPath(fileName);
+					emp.setPanNumber(value);
+				} else if (name.equals("passport")) {
+					emp.setPassportNumber(value);
+					emp.setPassportPath(fileName);
+				} else if (name.equals("personalnumber")) {
+					emp.setPersonalNumberPath(fileName);
+					emp.setPersonalNumber(value);
+				} else if (name.equals("resume")) {
+					emp.setResumePath(fileName);
+				} else if (name.equals("photo")) {
+					emp.setPhotoPath(fileName);
+				}
+				empRepository.save(emp);
 			}
-			empRepository.save(emp);
-		}
-		return "File uploaded : " + fileName;
-		}catch (Exception e) {
+			return "File uploaded : " + fileName;
+		} catch (Exception e) {
 			LOGGER.error(CLASSNAME + "got error while uploading the file " + methodName + e.getMessage());
-			throw new HRPortalException(HttpStatus.BAD_REQUEST.value(), e.getMessage(), e.getCause().getMessage());
+			throw new HRPortalException(HttpStatus.BAD_REQUEST.value(), e.getMessage());
 		}
 	}
 
@@ -78,7 +80,7 @@ public class StorageService {
 			return content;
 		} catch (Exception e) {
 			LOGGER.error(CLASSNAME + "got error while downloading the file " + methodName + e.getMessage());
-			throw new HRPortalException(HttpStatus.BAD_REQUEST.value(), e.getMessage(), e.getCause().getMessage());
+			throw new HRPortalException(HttpStatus.BAD_REQUEST.value(), e.getMessage());
 		}
 	}
 
@@ -86,11 +88,11 @@ public class StorageService {
 		String methodName = "deleteFile";
 		LOGGER.info(CLASSNAME + ": Entering into the " + methodName);
 		try {
-		s3Client.deleteObject(bucketName, fileName);
-		return fileName + " removed ...";
+			s3Client.deleteObject(bucketName, fileName);
+			return fileName + " removed ...";
 		} catch (Exception e) {
 			LOGGER.error(CLASSNAME + "got error while deleting the file " + methodName + e.getMessage());
-			throw new HRPortalException(HttpStatus.BAD_REQUEST.value(), e.getMessage(), e.getCause().getMessage());
+			throw new HRPortalException(HttpStatus.BAD_REQUEST.value(), e.getMessage());
 		}
 	}
 
@@ -101,9 +103,9 @@ public class StorageService {
 		try (FileOutputStream fos = new FileOutputStream(convertedFile)) {
 			fos.write(file.getBytes());
 			return convertedFile;
-		}  catch (Exception e) {
+		} catch (Exception e) {
 			LOGGER.error(CLASSNAME + "got error while downloading the file " + methodName + e.getMessage());
-			throw new HRPortalException(HttpStatus.BAD_REQUEST.value(), e.getMessage(), e.getCause().getMessage());
-		}	
+			throw new HRPortalException(HttpStatus.BAD_REQUEST.value(), e.getMessage());
+		}
 	}
 }

@@ -25,7 +25,7 @@ import com.vinnotech.portal.model.Employee;
 import com.vinnotech.portal.model.HRPortalConstants;
 import com.vinnotech.portal.service.EmployeeService;
 
-@CrossOrigin
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/api/employees")
 public class EmployeeController {
@@ -44,10 +44,10 @@ public class EmployeeController {
 	 */
 	@PreAuthorize(HRPortalConstants.ROLE_ADMIN_HR_ONLY)
 	@PostMapping("/create")
-	public ResponseEntity<Employee> saveEmployee(@RequestBody Employee emp) {
+	public ResponseEntity<String> saveEmployee(@RequestBody Employee emp) {
 		String methodName = "saveEmployee";
 		LOGGER.info(CLASSNAME + ": Entering into the " + methodName + " method");
-		Employee createdemp = empService.saveEmployee(emp);
+		String createdemp = empService.saveEmployee(emp);
 		HttpHeaders header = new HttpHeaders();
 		header.add("desc", "Creating New Employee");
 		LOGGER.info(CLASSNAME + ": Existing from  " + methodName + " method");

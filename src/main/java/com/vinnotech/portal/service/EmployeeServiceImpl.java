@@ -53,7 +53,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 	 * Create new employee
 	 */
 	@Override
-	public Employee saveEmployee(Employee emp) {
+	public String saveEmployee(Employee emp) {
 		String methodName = "saveEmployee";
 		LOGGER.info(CLASSNAME + ": Entering into the " + methodName);
 		UserReg userReg = new UserReg();
@@ -98,14 +98,14 @@ public class EmployeeServiceImpl implements EmployeeService {
 					}
 				}
 				LOGGER.info(CLASSNAME + ": Existing from  " + methodName + " method");
-				return remp;
+				return "Employee Created Successfully";
 			} else {
 				throw new HRPortalException(HttpStatus.UNAUTHORIZED.value(),
-						"You don't have permission to create/update :", "");
+						"You don't have permission to create/update :");
 			}
 		} catch (Exception e) {
 			LOGGER.error(CLASSNAME + "got error while getting Employee " + methodName + e.getMessage());
-			throw new HRPortalException(HttpStatus.BAD_REQUEST.value(), e.getMessage(), e.getCause().getMessage());
+			throw new HRPortalException(HttpStatus.BAD_REQUEST.value(), e.getMessage());
 		}
 	}
 
@@ -124,7 +124,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 		} catch (Exception e) {
 			LOGGER.error(CLASSNAME + "got error while getting Employee " + methodName + e.getMessage());
-			throw new HRPortalException(HttpStatus.NOT_FOUND.value(), e.getMessage(), e.getCause().getMessage());
+			throw new HRPortalException(HttpStatus.NOT_FOUND.value(), e.getMessage());
 			// throw new ValidateException("No records found");
 		}
 		/*
@@ -146,7 +146,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 			return employees.stream().filter(e -> e.isEmployeeDeleted() != true).collect(Collectors.toList());
 		} catch (Exception e) {
 			LOGGER.error(CLASSNAME + "got error while getting Employee " + methodName + e.getMessage());
-			throw new HRPortalException(HttpStatus.NOT_FOUND.value(), e.getMessage(), e.getCause().getMessage());
+			throw new HRPortalException(HttpStatus.NOT_FOUND.value(), e.getMessage());
 		}
 	}
 
@@ -171,7 +171,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 			return att;
 		} catch (Exception e) {
 			LOGGER.error(CLASSNAME + "got error while getting Employee " + methodName + e.getMessage());
-			throw new HRPortalException(HttpStatus.NOT_FOUND.value(), e.getMessage(), e.getCause().getMessage());
+			throw new HRPortalException(HttpStatus.NOT_FOUND.value(), e.getMessage());
 		}
 	}
 
@@ -192,7 +192,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 			}
 		} catch (Exception e) {
 			LOGGER.error(CLASSNAME + "got error while deleting  Employee " + methodName + e.getMessage());
-			throw new HRPortalException(HttpStatus.NOT_FOUND.value(), e.getMessage(), e.getCause().getMessage());
+			throw new HRPortalException(HttpStatus.NOT_FOUND.value(), e.getMessage());
 		}
 		LOGGER.info(CLASSNAME + ": Existing from  " + methodName + " method");
 		return "Employee Deleted Successfully";
@@ -213,7 +213,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 		} catch (Exception e) {
 			LOGGER.error(CLASSNAME + "got error while getting Employee without pagination and pagination desc "
 					+ methodName + e.getMessage());
-			throw new HRPortalException(HttpStatus.NOT_FOUND.value(), e.getMessage(), e.getCause().getMessage());
+			throw new HRPortalException(HttpStatus.NOT_FOUND.value(), e.getMessage());
 		}
 	}
 
@@ -232,7 +232,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 		} catch (Exception e) {
 			LOGGER.error(CLASSNAME + "got error while getting Employee without pagination and pagination ase"
 					+ methodName + e.getMessage());
-			throw new HRPortalException(HttpStatus.NOT_FOUND.value(), e.getMessage(), e.getCause().getMessage());
+			throw new HRPortalException(HttpStatus.NOT_FOUND.value(), e.getMessage());
 		}
 	}
 
@@ -251,7 +251,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 		} catch (Exception e) {
 			LOGGER.error(CLASSNAME + "got error while getting old  Employees without pagination and pagination ase"
 					+ methodName + e.getMessage());
-			throw new HRPortalException(HttpStatus.NOT_FOUND.value(), e.getMessage(), e.getCause().getMessage());
+			throw new HRPortalException(HttpStatus.NOT_FOUND.value(), e.getMessage());
 		}
 	}
 
@@ -270,7 +270,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 		} catch (Exception e) {
 			LOGGER.error(CLASSNAME + "got error while getting old Employees without pagination and pagination ase"
 					+ methodName + e.getMessage());
-			throw new HRPortalException(HttpStatus.NOT_FOUND.value(), e.getMessage(), e.getCause().getMessage());
+			throw new HRPortalException(HttpStatus.NOT_FOUND.value(), e.getMessage());
 		}
 	}
 
@@ -288,7 +288,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 			return searchEmps;
 		} catch (Exception e) {
 			LOGGER.error(CLASSNAME + "got error while searching the Employees" + methodName + e.getMessage());
-			throw new HRPortalException(HttpStatus.NOT_FOUND.value(), e.getMessage(), e.getCause().getMessage());
+			throw new HRPortalException(HttpStatus.NOT_FOUND.value(), e.getMessage());
 		}
 	}
 }

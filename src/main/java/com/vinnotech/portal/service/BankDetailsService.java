@@ -31,21 +31,21 @@ public class BankDetailsService {
 			return "BankDetails Updated Successfully";
 		} catch (Exception e) {
 			LOGGER.error(CLASSNAME + "got error while updating BankDetails" + methodName + e.getMessage());
-			throw new HRPortalException(HttpStatus.BAD_REQUEST.value(), e.getMessage(), e.getCause().getMessage());
+			throw new HRPortalException(HttpStatus.BAD_REQUEST.value(), e.getMessage());
 		}
 	}
-	
+
 	public BankDetails getBankDetails(Long empId) {
 		String methodName = "getBankDetails";
 		LOGGER.info(CLASSNAME + ": Entering into the " + methodName);
 		try {
-			Employee emp=employeeRepository.findById(empId).get();
-			BankDetails empBankDetails=emp.getBankDetails();
+			Employee emp = employeeRepository.findById(empId).get();
+			BankDetails empBankDetails = emp.getBankDetails();
 			LOGGER.info(CLASSNAME + ": Existing from  " + methodName + " method");
 			return empBankDetails;
-		}catch(Exception e) {
+		} catch (Exception e) {
 			LOGGER.error(CLASSNAME + "got error while getting BankDetails" + methodName + e.getMessage());
-			throw new HRPortalException(HttpStatus.BAD_REQUEST.value(), e.getMessage(), e.getCause().getMessage());
+			throw new HRPortalException(HttpStatus.BAD_REQUEST.value(), e.getMessage());
 		}
 	}
 }

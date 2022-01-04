@@ -22,26 +22,24 @@ public class RequestQuotService {
 	private RequestQuotRepository requestQuotRepository;
 
 	public RequestQuot createRequestQuot(RequestQuot requestQuot) {
-
 		String methodName = "createRequestQuot";
 		LOGGER.info(CLASSNAME + ": Entering into the " + methodName);
 		try {
-		return requestQuotRepository.save(requestQuot);
-		}catch (Exception e) {
+			return requestQuotRepository.save(requestQuot);
+		} catch (Exception e) {
 			LOGGER.error(CLASSNAME + "got error while creating request Quots " + methodName + e.getMessage());
-			throw new HRPortalException(HttpStatus.BAD_REQUEST.value(), e.getMessage(), e.getCause().getMessage());
-		 }
+			throw new HRPortalException(HttpStatus.BAD_REQUEST.value(), e.getMessage());
+		}
 	}
 
 	public List<RequestQuot> getAllRequestQuots() {
-
 		String methodName = "getAllRequestQuots";
 		LOGGER.info(CLASSNAME + ": Entering into the " + methodName);
 		try {
-		return requestQuotRepository.findAll();
-	}catch (Exception e) {
-		LOGGER.error(CLASSNAME + "got error while getting request Quots " + methodName + e.getMessage());
-		throw new HRPortalException(HttpStatus.BAD_REQUEST.value(), e.getMessage(), e.getCause().getMessage());
-	   }
+			return requestQuotRepository.findAll();
+		} catch (Exception e) {
+			LOGGER.error(CLASSNAME + "got error while getting request Quots " + methodName + e.getMessage());
+			throw new HRPortalException(HttpStatus.BAD_REQUEST.value(), e.getMessage());
+		}
 	}
 }

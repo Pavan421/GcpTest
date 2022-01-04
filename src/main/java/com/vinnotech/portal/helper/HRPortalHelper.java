@@ -24,7 +24,7 @@ public class HRPortalHelper {
 			return convertedFile;
 		}  catch (Exception e) {
 			LOGGER.error(CLASSNAME + "got error while downloading the file " + methodName + e.getMessage());
-			throw new HRPortalException(HttpStatus.BAD_REQUEST.value(), e.getMessage(), e.getCause().getMessage());
+			throw new HRPortalException(HttpStatus.BAD_REQUEST.value(), e.getMessage());
 		}	
 	} 
 

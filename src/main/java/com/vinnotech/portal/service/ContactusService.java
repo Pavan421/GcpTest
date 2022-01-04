@@ -24,23 +24,23 @@ public class ContactusService {
 		String methodName = "addContactus";
 		LOGGER.info(CLASSNAME + ": Entering into the " + methodName);
 		try {
-		return contactusRepository.save(contactus);
-		}catch (Exception e) {
+			return contactusRepository.save(contactus);
+		} catch (Exception e) {
 			LOGGER.error(CLASSNAME + "got error while creating Course " + methodName + e.getMessage());
-			throw new HRPortalException(HttpStatus.BAD_REQUEST.value(), e.getMessage(), e.getCause().getMessage());
-		} 
+			throw new HRPortalException(HttpStatus.BAD_REQUEST.value(), e.getMessage());
+		}
 	}
 
 	public List<ContactUS> getAllContactus() {
 		String methodName = "getAllContactus";
 		LOGGER.info(CLASSNAME + ": Entering into the " + methodName);
 		try {
-		List<ContactUS> listContactUs = contactusRepository.findAll();
-		LOGGER.info(CLASSNAME + ": Existing into the " + methodName);
-		return listContactUs;
-		}catch (Exception e) {
+			List<ContactUS> listContactUs = contactusRepository.findAll();
+			LOGGER.info(CLASSNAME + ": Existing into the " + methodName);
+			return listContactUs;
+		} catch (Exception e) {
 			LOGGER.error(CLASSNAME + "got error while getting course " + methodName + e.getMessage());
-			throw new HRPortalException(HttpStatus.NOT_FOUND.value(), e.getMessage(), e.getCause().getMessage());
+			throw new HRPortalException(HttpStatus.NOT_FOUND.value(), e.getMessage());
 		}
 	}
 }

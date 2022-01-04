@@ -31,7 +31,7 @@ import com.vinnotech.portal.repository.UserRepository;
 
 import io.jsonwebtoken.impl.DefaultClaims;
 
-@CrossOrigin
+@CrossOrigin(origins = "*")
 @RestController
 public class AuthenticationController {
 
@@ -62,11 +62,11 @@ public class AuthenticationController {
 			authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
 					authenticationRequest.getUsername(), authenticationRequest.getPassword()));
 		} catch (DisabledException e) {
-			throw  new HRPortalException(HttpStatus.BAD_REQUEST.value(), "User disabled", "Bad credenatils");
+			throw new HRPortalException(HttpStatus.BAD_REQUEST.value(), "User disabled");
 		} catch (BadCredentialsException e) {
-			throw new HRPortalException(HttpStatus.BAD_REQUEST.value(), "Please enter valid credentials", "Bad credentails");
-		}catch (Exception e) {
-			throw new HRPortalException(HttpStatus.BAD_REQUEST.value(), "Please enter valid credentials", "Bad credentails");
+			throw new HRPortalException(HttpStatus.BAD_REQUEST.value(), "Please enter valid credentials");
+		} catch (Exception e) {
+			throw new HRPortalException(HttpStatus.BAD_REQUEST.value(), "Please enter valid credentials");
 		}
 		UserDetails userDetails = userDetailsService.loadUserByUsername(authenticationRequest.getUsername());
 		String token = jwtUtil.generateToken(userDetails);
