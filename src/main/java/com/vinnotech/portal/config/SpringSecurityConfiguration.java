@@ -59,5 +59,6 @@ public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter {
 				.authenticationEntryPoint(jwtAuthenticationEntryPoint).and().sessionManagement()
 				.sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
 				.addFilterBefore(customJwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
+		http.cors();
 	}
 }
