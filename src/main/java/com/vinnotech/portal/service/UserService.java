@@ -1,5 +1,6 @@
 package com.vinnotech.portal.service;
 
+import java.util.List;
 import java.util.Random;
 
 import javax.servlet.http.HttpServletRequest;
@@ -43,6 +44,29 @@ public class UserService {
 	@Autowired
 	private PasswordEncoder bcryptEncoder;
 
+	/**
+	 * Getting all users
+	 * 
+	 * @return
+	 */
+	public List<UserReg> getAllUsers() {
+		String methodName = "getAllUsers";
+		LOGGER.info(CLASSNAME + ": Entering into the " + methodName);
+		try {
+			List<UserReg> users = userRepository.findAll();
+			LOGGER.info(CLASSNAME + ": Existing from  " + methodName + " method");
+			return users;
+		} catch (Exception e) {
+			throw new HRPortalException(HttpStatus.NOT_FOUND.value(), e.getMessage());
+		}
+	}
+
+	/**
+	 * Reset Password for an Existing user
+	 * 
+	 * @param uname
+	 * @return
+	 */
 	public String forgotPassword(String uname) {
 		String methodName = "forgotPassword";
 		LOGGER.info(CLASSNAME + ": Entering into the " + methodName);
@@ -81,6 +105,12 @@ public class UserService {
 		}
 	}
 
+	/**
+	 * Change password for Logged in user
+	 * 
+	 * @param changePwd
+	 * @return
+	 */
 	public String changePassword(ChangePwd changePwd) {
 		String methodName = "changePassword";
 		LOGGER.info(CLASSNAME + ": Entering into the " + methodName);

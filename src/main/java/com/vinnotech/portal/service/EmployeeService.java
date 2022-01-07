@@ -9,11 +9,13 @@ import com.vinnotech.portal.model.Employee;
 
 public interface EmployeeService {
 
+	public Employee employeeProfile();
+
+	public String saveEmployee(Employee emp);
+
 	public Employee getEmployee(Long id);
 
 	public List<Employee> getAllEmployees();
-
-	public String saveEmployee(Employee emp);
 
 	public String deleteEmployee(Long id);
 

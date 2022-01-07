@@ -50,6 +50,28 @@ public class EmployeeServiceImpl implements EmployeeService {
 	private PasswordEncoder bcryptEncoder;
 
 	/**
+	 * Getting Employee from token for profile purpose
+	 */
+	@Override
+	public Employee employeeProfile() {
+		String methodName = "employeeProfile";
+		LOGGER.info(CLASSNAME + ": Entering into the " + methodName);
+		try {
+			HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes())
+					.getRequest();
+			String uname = jwtUtil.getUserNameFromRequest(request);
+			UserReg user = userRepository.findByUsername(uname);
+			Long empId = user.getEmpId();
+			Employee emp = empRepository.findById(empId).get();
+			LOGGER.info(CLASSNAME + ": Existing from  " + methodName + " method");
+			return emp;
+		} catch (Exception e) {
+			LOGGER.error(CLASSNAME + "got error while getting Employee " + methodName + e.getMessage());
+			throw new HRPortalException(HttpStatus.BAD_REQUEST.value(), e.getMessage());
+		}
+	}
+
+	/**
 	 * Create new employee
 	 */
 	@Override
@@ -104,7 +126,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 						"You don't have permission to create/update :");
 			}
 		} catch (Exception e) {
-			LOGGER.error(CLASSNAME + "got error while getting Employee " + methodName + e.getMessage());
+			LOGGER.error(CLASSNAME + "got error while saving Employee " + methodName + e.getMessage());
 			throw new HRPortalException(HttpStatus.BAD_REQUEST.value(), e.getMessage());
 		}
 	}

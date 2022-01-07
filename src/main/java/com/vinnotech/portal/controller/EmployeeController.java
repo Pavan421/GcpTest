@@ -35,6 +35,22 @@ public class EmployeeController {
 	private EmployeeService empService;
 
 	/**
+	 * This is profile of employee when logged in
+	 * 
+	 * @return
+	 */
+	@GetMapping("/profile")
+	public ResponseEntity<Employee> employeeProfile() {
+		String methodName = "employeeProfile";
+		LOGGER.info(CLASSNAME + ": Entering into the " + methodName + " method");
+		Employee emp = empService.employeeProfile();
+		HttpHeaders header = new HttpHeaders();
+		header.add("desc", "Gettinging New Employee");
+		LOGGER.info(CLASSNAME + ": Existing from  " + methodName + " method");
+		return ResponseEntity.status(HttpStatus.OK).headers(header).body(emp);
+	}
+
+	/**
 	 * Creating new Employee
 	 * 
 	 * @param emp
