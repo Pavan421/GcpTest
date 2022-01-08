@@ -41,7 +41,7 @@ public class StorageService {
 		LOGGER.info(CLASSNAME + ": Entering into the " + methodName);
 		try {
 			File fileObj = convertMultiPartFileToFile(file);
-			String fileName = empId + "_" + name + "." + file.getOriginalFilename().split("\\.")[1];
+			String fileName =(empId + "_" + name + "." + file.getOriginalFilename().split("\\.")[1]).toString();
 			s3Client.putObject(new PutObjectRequest(bucketName, fileName, fileObj));
 			fileObj.delete();
 			Optional<Employee> employee = empRepository.findById(Long.parseLong(empId));
