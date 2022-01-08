@@ -69,6 +69,23 @@ public class EmployeeController {
 	}
 
 	/**
+	 * updating Employee
+	 * 
+	 * @param emp
+	 */
+	@PreAuthorize(HRPortalConstants.ROLE_ADMIN_HR_ONLY)
+	@PutMapping("/update")
+	public ResponseEntity<String> updateEmployee(@RequestBody Employee employee) {
+		String methodName = "updateEmployee";
+		LOGGER.info(CLASSNAME + ": Entering into the " + methodName + " method");
+		String updatedemp = empService.updateEmployee(employee);
+		HttpHeaders header = new HttpHeaders();
+		header.add("desc", "Updating Employee");
+		LOGGER.info(CLASSNAME + ": Existing from  " + methodName + " method");
+		return ResponseEntity.status(HttpStatus.OK).headers(header).body(updatedemp);
+	}
+
+	/**
 	 * Getting the Employee based on EmpId
 	 * 
 	 * @param id
@@ -101,23 +118,6 @@ public class EmployeeController {
 		header.add("desc", "getting the All Employees");
 		LOGGER.info(CLASSNAME + ": Existing from  " + methodName + " method");
 		return ResponseEntity.status(HttpStatus.OK).headers(header).body(lEmployees);
-	}
-
-	/**
-	 * updating Employee
-	 * 
-	 * @param emp
-	 */
-	@PreAuthorize(HRPortalConstants.ROLE_ADMIN_HR_ONLY)
-	@PutMapping("/update")
-	public ResponseEntity<String> updateEmployee(@RequestBody Employee emp) {
-		String methodName = "updateEmployee";
-		LOGGER.info(CLASSNAME + ": Entering into the " + methodName + " method");
-		empService.saveEmployee(emp);
-		HttpHeaders header = new HttpHeaders();
-		header.add("desc", "updating New Employee");
-		LOGGER.info(CLASSNAME + ": Existing from  " + methodName + " method");
-		return ResponseEntity.status(HttpStatus.OK).headers(header).body("Employee updated successfully");
 	}
 
 	/**

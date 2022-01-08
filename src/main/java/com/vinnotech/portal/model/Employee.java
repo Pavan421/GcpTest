@@ -40,7 +40,6 @@ public class Employee {
 	@Column(name = "emp_id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	@Column(nullable = false)
 	private String firstName;
 	private String lastName;
 	private String shortName;

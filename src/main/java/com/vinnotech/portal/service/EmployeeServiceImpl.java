@@ -132,6 +132,25 @@ public class EmployeeServiceImpl implements EmployeeService {
 	}
 
 	/**
+	 * Updating employee
+	 * 
+	 * @param employee
+	 * @return
+	 */
+	public String updateEmployee(Employee employee) {
+		String methodName = "updateEmployee";
+		LOGGER.info(CLASSNAME + ": Entering into the " + methodName);
+		try {
+			empRepository.save(employee);
+			LOGGER.info(CLASSNAME + ": Existing from  " + methodName + " method");
+			return "Employee updated Successfully";
+		} catch (Exception e) {
+			LOGGER.error(CLASSNAME + "got error while updating Employee " + methodName + e.getMessage());
+			throw new HRPortalException(HttpStatus.BAD_REQUEST.value(), e.getMessage());
+		}
+	}
+
+	/**
 	 * Get the Employee details based on employee Id
 	 */
 	@Override

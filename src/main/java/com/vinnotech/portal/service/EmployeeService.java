@@ -13,6 +13,8 @@ public interface EmployeeService {
 
 	public String saveEmployee(Employee emp);
 
+	public String updateEmployee(Employee employe);
+
 	public Employee getEmployee(Long id);
 
 	public List<Employee> getAllEmployees();
