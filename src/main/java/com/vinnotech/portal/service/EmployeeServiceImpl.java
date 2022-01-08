@@ -141,7 +141,41 @@ public class EmployeeServiceImpl implements EmployeeService {
 		String methodName = "updateEmployee";
 		LOGGER.info(CLASSNAME + ": Entering into the " + methodName);
 		try {
-			empRepository.save(employee);
+			Employee extEmp = empRepository.findById(employee.getId()).get();
+			if (!StringUtils.isEmpty(employee.getFirstName())) {
+				extEmp.setFirstName(employee.getFirstName());
+			}
+			if (!StringUtils.isEmpty(employee.getLastName())) {
+				extEmp.setLastName(employee.getLastName());
+			}
+			if (!StringUtils.isEmpty(employee.getDesignation())) {
+				extEmp.setDesignation(employee.getDesignation());
+			}
+			if (!StringUtils.isEmpty(employee.getPersonalEmailId())) {
+				extEmp.setPersonalEmailId(employee.getPersonalEmailId());
+			}
+			if (!StringUtils.isEmpty(employee.getMobileNumber())) {
+				extEmp.setMobileNumber(employee.getMobileNumber());
+			}
+			if (!StringUtils.isEmpty(employee.getShortDesc())) {
+				extEmp.setShortDesc(employee.getShortDesc());
+			}
+			if (!StringUtils.isEmpty(employee.getSkills())) {
+				extEmp.setSkills(employee.getSkills());
+			}
+			if (!StringUtils.isEmpty(employee.getEndDate())) {
+				extEmp.setEndDate(employee.getEndDate());
+			}
+			if (!StringUtils.isEmpty(employee.getPfAccountNumber())) {
+				extEmp.setPfAccountNumber(employee.getPfAccountNumber());
+			}
+			if (!StringUtils.isEmpty(employee.getUAN())) {
+				extEmp.setUAN(employee.getUAN());
+			}
+			if (employee.isEmployeeDeleted()) {
+				extEmp.setEmployeeDeleted(employee.isEmployeeDeleted());
+			}
+			empRepository.save(extEmp);
 			LOGGER.info(CLASSNAME + ": Existing from  " + methodName + " method");
 			return "Employee updated Successfully";
 		} catch (Exception e) {
