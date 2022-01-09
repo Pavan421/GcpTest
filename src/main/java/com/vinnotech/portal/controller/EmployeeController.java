@@ -148,8 +148,8 @@ public class EmployeeController {
 	 */
 	@PreAuthorize(HRPortalConstants.ROLE_ADMIN_HR_ONLY)
 	@GetMapping("/sortandpagedesc/{offset}/{pageSize}/{field}")
-	private ResponseEntity<Page<Employee>> getAllEmployeeswithSortAndPagiDesc(@PathVariable int offset,
-			@PathVariable int pageSize, @PathVariable String field) {
+	public ResponseEntity<Page<Employee>> getAllEmployeeswithSortAndPagiDesc(@PathVariable("offset") int offset,
+			@PathVariable("pageSize") int pageSize, @PathVariable("field") String field) {
 		String methodName = "getAllEmployeeswithSortAndPagiDesc";
 		LOGGER.info(CLASSNAME + ": Entering into the " + methodName + " method");
 		Page<Employee> pageEmpsDesc = empService.getAllEmployeeswithSortAndPagiDesc(offset, pageSize, field);
@@ -169,7 +169,7 @@ public class EmployeeController {
 	 */
 	@PreAuthorize(HRPortalConstants.ROLE_ADMIN_HR_ONLY)
 	@GetMapping("/sortandpageasc/{offset}/{pageSize}/{field}")
-	private ResponseEntity<Page<Employee>> getAllEmployeeswithSortAndPagiASC(@PathVariable int offset,
+	public ResponseEntity<Page<Employee>> getAllEmployeeswithSortAndPagiASC(@PathVariable int offset,
 			@PathVariable int pageSize, @PathVariable String field) {
 		String methodName = "getAllEmployeeswithSortAndPagiASC";
 		LOGGER.info(CLASSNAME + ": Entering into the " + methodName + " method");
@@ -191,7 +191,7 @@ public class EmployeeController {
 	 */
 	@PreAuthorize(HRPortalConstants.ROLE_ADMIN_HR_ONLY)
 	@GetMapping("/spEmpDeldesc/{isEmpDeleted}/{offset}/{pageSize}/{field}")
-	private ResponseEntity<Page<Employee>> getAllDelEmpswithSortAndPagiDesc(@PathVariable boolean isEmpDeleted,
+	public ResponseEntity<Page<Employee>> getAllDelEmpswithSortAndPagiDesc(@PathVariable boolean isEmpDeleted,
 			@PathVariable int offset, @PathVariable int pageSize, @PathVariable String field) {
 		String methodName = "getAllJobswithSortAndPagiASC";
 		LOGGER.info(CLASSNAME + ": Entering into the " + methodName + " method");
@@ -214,7 +214,7 @@ public class EmployeeController {
 	 */
 	@PreAuthorize(HRPortalConstants.ROLE_ADMIN_HR_ONLY)
 	@GetMapping("/spEmpDelasc/{isEmpDeleted}/{offset}/{pageSize}/{field}")
-	private ResponseEntity<Page<Employee>> getAllDelEmpswithSortAndPagiAsc(@PathVariable boolean isEmpDeleted,
+	public ResponseEntity<Page<Employee>> getAllDelEmpswithSortAndPagiAsc(@PathVariable boolean isEmpDeleted,
 			@PathVariable int offset, @PathVariable int pageSize, @PathVariable String field) {
 		String methodName = "getAllJobswithSortAndPagiASC";
 		LOGGER.info(CLASSNAME + ": Entering into the " + methodName + " method");

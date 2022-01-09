@@ -32,6 +32,12 @@ public class ProjectController {
 	@Autowired
 	private ProjectService projectService;
 
+	/**
+	 * Creating new Project
+	 * 
+	 * @param project
+	 * @return
+	 */
 	@PreAuthorize(HRPortalConstants.ROLE_ADMIN_HR_ONLY)
 	@PostMapping("/create")
 	public ResponseEntity<String> createProject(@RequestBody Project project) {
@@ -51,6 +57,13 @@ public class ProjectController {
 	 * " method"); projectService.createProjectWithEmp(project, empId); }
 	 */
 
+	/**
+	 * Assigning project to employee
+	 * 
+	 * @param empId
+	 * @param projectId
+	 * @return
+	 */
 	@PreAuthorize(HRPortalConstants.ROLE_ADMIN_HR_ONLY)
 	@PutMapping("/assign/{empId}/{projectId}")
 	public ResponseEntity<String> assignProject(@PathVariable("empId") Long empId,
@@ -64,6 +77,12 @@ public class ProjectController {
 		return ResponseEntity.status(HttpStatus.OK).headers(header).body(assignedProject);
 	}
 
+	/**
+	 * Getting project by projectId
+	 * 
+	 * @param projectId
+	 * @return
+	 */
 	@PreAuthorize(HRPortalConstants.ROLE_ADMIN_HR_ONLY)
 	@GetMapping("/{projectId}")
 	public ResponseEntity<Project> getProject(@PathVariable("projectId") Long projectId) {
@@ -76,6 +95,11 @@ public class ProjectController {
 		return ResponseEntity.status(HttpStatus.OK).headers(header).body(project);
 	}
 
+	/**
+	 * Getting all projects
+	 * 
+	 * @return
+	 */
 	@PreAuthorize(HRPortalConstants.ROLE_ADMIN_HR_ONLY)
 	@GetMapping
 	public ResponseEntity<List<Project>> getAllProjects() {
@@ -88,6 +112,12 @@ public class ProjectController {
 		return ResponseEntity.status(HttpStatus.OK).headers(header).body(projects);
 	}
 
+	/**
+	 * Deleting project by Id
+	 * 
+	 * @param projectId
+	 * @return
+	 */
 	@PreAuthorize(HRPortalConstants.ROLE_ADMIN_HR_ONLY)
 	@DeleteMapping("/{projectId}")
 	public ResponseEntity<String> deleteProject(@PathVariable("projectId") Long projectId) {
@@ -100,12 +130,18 @@ public class ProjectController {
 		return ResponseEntity.status(HttpStatus.OK).headers(header).body(DeletedProject);
 	}
 
+	/**
+	 * Getting projects of employee by empId
+	 * 
+	 * @param empId
+	 * @return
+	 */
 	@PreAuthorize(HRPortalConstants.ROLE_ADMIN_HR_ONLY)
 	@GetMapping("/emp/{empId}")
-	public ResponseEntity<List<Project>> getProjectDetails(@PathVariable("empId") Long empId) {
-		String methodName = "getProjectDetails";
+	public ResponseEntity<List<Project>> getEmpProjectDetails(@PathVariable("empId") Long empId) {
+		String methodName = "getEmpProjectDetails";
 		LOGGER.info(CLASSNAME + " entering into the " + methodName + " method");
-		List<Project> projects = projectService.getProjectDetails(empId);
+		List<Project> projects = projectService.getEmpProjectDetails(empId);
 		HttpHeaders headers = new HttpHeaders();
 		headers.add("desc", "getting Project Details");
 		LOGGER.info(CLASSNAME + " existing from " + methodName + " method");

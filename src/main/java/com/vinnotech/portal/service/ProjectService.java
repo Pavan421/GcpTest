@@ -101,8 +101,8 @@ public class ProjectService {
 		}
 	}
 
-	public List<Project> getProjectDetails(Long empId) {
-		String methodName = "getProjectDetails ";
+	public List<Project> getEmpProjectDetails(Long empId) {
+		String methodName = "getEmpProjectDetails ";
 		LOGGER.info(CLASSNAME + ": Entering into the " + methodName);
 		try {
 			Employee emp = employeeRepository.findById(empId).get();

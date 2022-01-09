@@ -26,9 +26,19 @@ public class StorageController {
 
 	private static final String CLASSNAME = "StorageController";
 	private static final Logger LOGGER = LoggerFactory.getLogger(StorageController.class);
+
 	@Autowired
 	private StorageService service;
 
+	/**
+	 * Uploading Document for Employee
+	 * 
+	 * @param empId
+	 * @param name
+	 * @param value
+	 * @param file
+	 * @return
+	 */
 	@PreAuthorize(HRPortalConstants.ROLE_ADMIN_HR_RECRUITER_EMPLOYEE_ONLY)
 	@PostMapping("/upload/{empId}")
 	public ResponseEntity<String> uploadFile(@PathVariable("empId") String empId,
@@ -43,6 +53,12 @@ public class StorageController {
 		return ResponseEntity.status(HttpStatus.OK).headers(header).body(uploadFile);
 	}
 
+	/**
+	 * Downloading Document for Employee
+	 * 
+	 * @param fileName
+	 * @return
+	 */
 	@PreAuthorize(HRPortalConstants.ROLE_ADMIN_HR_RECRUITER_EMPLOYEE_ONLY)
 	@GetMapping("/download/{fileName}")
 	public ResponseEntity<ByteArrayResource> downloadFile(@PathVariable("fileName") String fileName) {
@@ -53,7 +69,7 @@ public class StorageController {
 	}
 
 	/**
-	 * This is for deleting the
+	 * This is for deleting the Document
 	 * 
 	 * @param fileName
 	 * @return

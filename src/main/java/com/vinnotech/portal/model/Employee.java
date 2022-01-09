@@ -97,6 +97,6 @@ public class Employee {
 	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	@JoinTable(name = "employees_projects", joinColumns = @JoinColumn(name = "emp_id"), inverseJoinColumns = @JoinColumn(name = "project_id"))
 	@JsonIgnore
-	private List<Project> projects = new ArrayList<>();
+	private List<Project> projects;
 
 }

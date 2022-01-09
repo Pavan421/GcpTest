@@ -30,6 +30,13 @@ public class PreviousCompanyController {
 	@Autowired
 	private PreviousCompanyService previousCompanyService;
 
+	/**
+	 * Updating previous company details of employee by empId
+	 * 
+	 * @param previousCompany
+	 * @param empId
+	 * @return
+	 */
 	@PreAuthorize(HRPortalConstants.ROLE_ADMIN_HR_ONLY)
 	@PutMapping("/update/{empId}")
 	public ResponseEntity<String> updatePreviousCompanyDetails(@RequestBody List<PreviousCompany> previousCompany,
@@ -44,6 +51,12 @@ public class PreviousCompanyController {
 		return ResponseEntity.status(HttpStatus.OK).headers(headers).body(updatedPreviousCompanyDetails);
 	}
 
+	/**
+	 * Getting previous company details of employee by id
+	 * 
+	 * @param empId
+	 * @return
+	 */
 	@PreAuthorize(HRPortalConstants.ROLE_ADMIN_HR_ONLY)
 	@GetMapping("/{empId}")
 	public ResponseEntity<List<PreviousCompany>> getPreviousCompanyDetails(@PathVariable("empId") Long empId) {

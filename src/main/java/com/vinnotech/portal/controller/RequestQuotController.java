@@ -29,6 +29,12 @@ public class RequestQuotController {
 	@Autowired
 	private RequestQuotService requestQuotService;
 
+	/**
+	 * Creating new Request Quote
+	 * 
+	 * @param requestQuot
+	 * @return
+	 */
 	@PostMapping("/create")
 	public ResponseEntity<RequestQuot> createRequestQuot(@RequestBody RequestQuot requestQuot) {
 		String methodName = "createRequestQuot";
@@ -40,6 +46,11 @@ public class RequestQuotController {
 		return ResponseEntity.status(HttpStatus.OK).headers(header).body(createReqQuot);
 	}
 
+	/**
+	 * Getting all Request Quotes
+	 * 
+	 * @return
+	 */
 	@PreAuthorize(HRPortalConstants.ROLE_ADMIN_HR_ONLY)
 	@GetMapping
 	public ResponseEntity<List<RequestQuot>> getAllRequestQuots() {

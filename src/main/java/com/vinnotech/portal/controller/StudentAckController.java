@@ -32,6 +32,13 @@ public class StudentAckController {
 	@Autowired
 	private StudentAckService studentAckService;
 
+	/**
+	 * Creating jobAcknowledgement
+	 * 
+	 * @param studentAck
+	 * @param courseId
+	 * @return
+	 */
 	@PostMapping("/create/{courseId}")
 	public ResponseEntity<String> createJobAck(@RequestBody StudentAck studentAck,
 			@PathVariable("courseId") Long courseId) {
@@ -44,6 +51,11 @@ public class StudentAckController {
 		return ResponseEntity.status(HttpStatus.OK).headers(header).body(createdStudentAck);
 	}
 
+	/**
+	 * Getting all student Acknowledgement
+	 * 
+	 * @return
+	 */
 	@PreAuthorize(HRPortalConstants.ROLE_ADMIN_HR_RECRUITER_ONLY)
 	@GetMapping
 	public ResponseEntity<List<StudentAck>> getAllStudentAcks() {
@@ -56,6 +68,15 @@ public class StudentAckController {
 		return ResponseEntity.status(HttpStatus.OK).headers(header).body(studentAckList);
 	}
 
+	/**
+	 * Getting studentAck based on sorting and pagination DESC
+	 * 
+	 * @param studentId
+	 * @param offset
+	 * @param pageSize
+	 * @param field
+	 * @return
+	 */
 	@PreAuthorize(HRPortalConstants.ROLE_ADMIN_HR_RECRUITER_ONLY)
 	@GetMapping("/spStudentAckDesc/{studentId}/{offset}/{pageSize}/{field}")
 	public ResponseEntity<Page<StudentAck>> getAllStudentAckswithSortAndPagiDesc(@PathVariable Long studentId,
@@ -70,6 +91,14 @@ public class StudentAckController {
 		return ResponseEntity.status(HttpStatus.OK).headers(header).body(studentAckSwithSort);
 	}
 
+	/**
+	 * Getting studentAck based on sorting and pagination DESC
+	 * 
+	 * @param studentId
+	 * @param offset
+	 * @param pageSize
+	 * @return
+	 */
 	@PreAuthorize(HRPortalConstants.ROLE_ADMIN_HR_RECRUITER_ONLY)
 	@GetMapping("/spStudentAckDesc/{studentId}/{offset}/{pageSize}")
 	public ResponseEntity<Page<StudentAck>> getAllStudentAckswithSortAndPagiDesc(@PathVariable Long studentId,
@@ -84,6 +113,15 @@ public class StudentAckController {
 		return ResponseEntity.status(HttpStatus.OK).headers(header).body(studentAckSwithSort);
 	}
 
+	/**
+	 * Getting studentAck based on sorting and pagination ASEC
+	 * 
+	 * @param studentId
+	 * @param offset
+	 * @param pageSize
+	 * @param field
+	 * @return
+	 */
 	@PreAuthorize(HRPortalConstants.ROLE_ADMIN_HR_RECRUITER_ONLY)
 	@GetMapping("/spStudentAckAsc/{studentId}/{offset}/{pageSize}/{field}")
 	public ResponseEntity<Page<StudentAck>> getAllStudentAckswithSortAndPagiASC(@PathVariable Long studentId,
@@ -99,6 +137,12 @@ public class StudentAckController {
 
 	}
 
+	/**
+	 * Deleting Student Acknowledgement
+	 * 
+	 * @param id
+	 * @return
+	 */
 	@PreAuthorize(HRPortalConstants.ROLE_ADMIN_HR_RECRUITER_ONLY)
 	@DeleteMapping("/{id}")
 	public ResponseEntity<String> deleteStudentAck(@PathVariable Long id) {

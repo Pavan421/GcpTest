@@ -24,6 +24,7 @@ import com.vinnotech.portal.exception.HRPortalException;
 import com.vinnotech.portal.model.Attachments;
 import com.vinnotech.portal.model.Employee;
 import com.vinnotech.portal.model.HRPortalConstants;
+import com.vinnotech.portal.model.Project;
 import com.vinnotech.portal.model.UserReg;
 import com.vinnotech.portal.repository.EmployeeRepository;
 import com.vinnotech.portal.repository.UserRepository;
@@ -63,6 +64,8 @@ public class EmployeeServiceImpl implements EmployeeService {
 			UserReg user = userRepository.findByUsername(uname);
 			Long empId = user.getEmpId();
 			Employee emp = empRepository.findById(empId).get();
+			List<Project> projects = emp.getProjects();
+			emp.setProjects(projects);
 			LOGGER.info(CLASSNAME + ": Existing from  " + methodName + " method");
 			return emp;
 		} catch (Exception e) {
@@ -194,6 +197,8 @@ public class EmployeeServiceImpl implements EmployeeService {
 		try {
 			Optional<Employee> employee = empRepository.findById(empId);
 			Employee emp = employee.get();
+			List<Project> projects = emp.getProjects();
+			emp.setProjects(projects);
 			LOGGER.info(CLASSNAME + ": Existing from  " + methodName + " method");
 			return emp;
 
