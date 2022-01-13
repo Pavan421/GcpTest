@@ -127,7 +127,7 @@ public class EmployeeController {
 	 * @return
 	 */
 	@PreAuthorize(HRPortalConstants.ROLE_ADMIN_HR_ONLY)
-	@GetMapping("/attachments")
+	@GetMapping("/attachments/{empId}")
 	public ResponseEntity<Attachments> getAttachments(@PathVariable Long empId) {
 		String methodName = "getAttachments";
 		LOGGER.info(CLASSNAME + ": Entering into the " + methodName + " method");

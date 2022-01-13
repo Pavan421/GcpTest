@@ -1,6 +1,5 @@
 package com.vinnotech.portal.model;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -80,6 +79,8 @@ public class Employee {
 	@OneToOne(fetch = FetchType.EAGER, optional = true, cascade = CascadeType.ALL)
 	private BankDetails bankDetails;
 
+	@OneToOne(fetch = FetchType.EAGER, optional = true, cascade = CascadeType.ALL)
+	private Education education;
 	// Company Details
 	@OneToMany(cascade = CascadeType.ALL)
 	@JoinColumn(name = "emp_pcid", referencedColumnName = "emp_id")
