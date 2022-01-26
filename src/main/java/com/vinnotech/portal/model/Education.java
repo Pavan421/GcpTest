@@ -32,6 +32,6 @@ public class Education {
 	private Date startDate;
 	@Temporal(TemporalType.DATE)
 	@JsonFormat(pattern = "yyyy-MM-dd")
-	private Date EndDate;
+	private Date endDate;
 	
 }
