@@ -1,15 +1,15 @@
 package com.vinnotech.portal.controller;
 
-import java.util.List;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -40,12 +40,12 @@ public class ContactusController {
 		return ResponseEntity.status(HttpStatus.OK).headers(header).body(contactUs);
 	}
 
-	@PreAuthorize(HRPortalConstants.ROLE_ADMIN_HR_ONLY)
-	@GetMapping
-	public ResponseEntity<List<ContactUS>> contactus() {
+	@PreAuthorize(HRPortalConstants.ROLE_ADMIN_ONLY)
+	@GetMapping("{offset}/{pageSize}")
+	public ResponseEntity<Page<ContactUS>> contactus(@PathVariable int offset, @PathVariable int pageSize) {
 		String methodName = "contactus";
 		LOGGER.info(CLASSNAME + ":Entering into the" + methodName + " method");
-		List<ContactUS> listContactUs = contactusService.getAllContactus();
+		Page<ContactUS> listContactUs = contactusService.getAllContactus(offset, pageSize);
 		HttpHeaders header = new HttpHeaders();
 		header.add("desc", "getting contactusList");
 		LOGGER.info(CLASSNAME + ": Existing from  " + methodName + " method");

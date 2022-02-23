@@ -21,7 +21,7 @@ public class BankDetailsService {
 	private EmployeeRepository employeeRepository;
 
 	public String updateBankDetails(BankDetails bankDetails, Long empId) {
-		String methodName = "addBankDetails";
+		String methodName = "updateBankDetails";
 		LOGGER.info(CLASSNAME + ": Entering into the " + methodName);
 		try {
 			Employee emp = employeeRepository.findById(empId).get();

@@ -1,10 +1,11 @@
 package com.vinnotech.portal.service;
 
-import java.util.List;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
@@ -21,25 +22,30 @@ public class RequestQuotService {
 	@Autowired
 	private RequestQuotRepository requestQuotRepository;
 
-	public RequestQuot createRequestQuot(RequestQuot requestQuot) {
+	public String createRequestQuot(RequestQuot requestQuot) {
 		String methodName = "createRequestQuot";
 		LOGGER.info(CLASSNAME + ": Entering into the " + methodName);
 		try {
-			return requestQuotRepository.save(requestQuot);
+			requestQuotRepository.save(requestQuot);
+			LOGGER.info(CLASSNAME + ": Existing from  " + methodName + " method");
+			return "Message Saved Successfully";
 		} catch (Exception e) {
 			LOGGER.error(CLASSNAME + "got error while creating request Quots " + methodName + e.getMessage());
 			throw new HRPortalException(HttpStatus.BAD_REQUEST.value(), e.getMessage());
 		}
 	}
 
-	public List<RequestQuot> getAllRequestQuots() {
+	public Page<RequestQuot> getAllRequestQuots(int offset, int pageSize) {
 		String methodName = "getAllRequestQuots";
 		LOGGER.info(CLASSNAME + ": Entering into the " + methodName);
 		try {
-			return requestQuotRepository.findAll();
+			Page<RequestQuot> getAllRequestQuotSort = requestQuotRepository
+					.findAll(PageRequest.of(offset, pageSize, Sort.by(Sort.Direction.DESC, "createdDate")));
+			LOGGER.info(CLASSNAME + ": Existing into the " + methodName);
+			return getAllRequestQuotSort;
 		} catch (Exception e) {
 			LOGGER.error(CLASSNAME + "got error while getting request Quots " + methodName + e.getMessage());
-			throw new HRPortalException(HttpStatus.BAD_REQUEST.value(), e.getMessage());
+			throw new HRPortalException(HttpStatus.NOT_FOUND.value(), e.getMessage());
 		}
 	}
 }

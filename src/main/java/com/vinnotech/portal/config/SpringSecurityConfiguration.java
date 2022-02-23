@@ -54,7 +54,7 @@ public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter {
 						"/api/courses/searchcourseByParam/{publish}/{serachParam}/{offset}/{pageSize}",
 						"/api/jobs/sppublishdesc/{publish}/{offset}/{pageSize}/{field}", "/api/joback/create/{jobId}",
 						"/api/jobs/searchJobsByParam/{publish}/{searchparam}/{offset}/{pageSize}",
-						"/api/reqquot/create", "api/contactus/create", "/register", "/authenticate", "/api/contactus/create")
+						"/api/reqquot/create", "api/contactus/create", "/authenticate", "/api/contactus/create")
 				.permitAll().anyRequest().authenticated().and().exceptionHandling()
 				.authenticationEntryPoint(jwtAuthenticationEntryPoint).and().sessionManagement()
 				.sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()

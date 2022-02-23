@@ -1,15 +1,15 @@
 package com.vinnotech.portal.controller;
 
-import java.util.List;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -36,10 +36,10 @@ public class RequestQuotController {
 	 * @return
 	 */
 	@PostMapping("/create")
-	public ResponseEntity<RequestQuot> createRequestQuot(@RequestBody RequestQuot requestQuot) {
+	public ResponseEntity<String> createRequestQuot(@RequestBody RequestQuot requestQuot) {
 		String methodName = "createRequestQuot";
 		LOGGER.info(CLASSNAME + ": Entering into the " + methodName + " method");
-		RequestQuot createReqQuot = requestQuotService.createRequestQuot(requestQuot);
+		String createReqQuot = requestQuotService.createRequestQuot(requestQuot);
 		HttpHeaders header = new HttpHeaders();
 		header.add("desc", "creating Request quot");
 		LOGGER.info(CLASSNAME + ": Existing from  " + methodName + " method");
@@ -51,12 +51,12 @@ public class RequestQuotController {
 	 * 
 	 * @return
 	 */
-	@PreAuthorize(HRPortalConstants.ROLE_ADMIN_HR_ONLY)
-	@GetMapping
-	public ResponseEntity<List<RequestQuot>> getAllRequestQuots() {
+	@PreAuthorize(HRPortalConstants.ROLE_ADMIN_ONLY)
+	@GetMapping("{offset}/{pageSize}")
+	public ResponseEntity<Page<RequestQuot>> getAllRequestQuots(@PathVariable int offset, @PathVariable int pageSize) {
 		String methodName = "getAllRequestQuots";
 		LOGGER.info(CLASSNAME + ": Entering into the " + methodName + " method");
-		List<RequestQuot> getReqQuot = requestQuotService.getAllRequestQuots();
+		Page<RequestQuot> getReqQuot = requestQuotService.getAllRequestQuots(offset, pageSize);
 		HttpHeaders header = new HttpHeaders();
 		header.add("desc", "creating Request quot");
 		LOGGER.info(CLASSNAME + ": Existing from  " + methodName + " method");

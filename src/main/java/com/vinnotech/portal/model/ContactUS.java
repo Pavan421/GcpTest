@@ -25,25 +25,12 @@ public class ContactUS {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-
-	@Column(name = "emplyoee_id")
-	private Long emlpoyeeid;
-
-	@Column(name = "first_name")
 	private String name;
-
-	@Column(name = "mail_id")
 	private String email;
-
-	@Column(name = "message")
+	private Long phoneNumber;
 	private String message;
-
-	@Column(name = "phone_num")
-	private Long phonenumber;
-
 	@CreationTimestamp
 	@Temporal(TemporalType.DATE)
 	@JsonFormat(pattern = "yyyy-MM-dd")
-	private Date date;
-
+	private Date createdDate;
 }
